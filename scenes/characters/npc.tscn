@@ -283,13 +283,14 @@ z_index = 1
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_thqvo")
 animation = &"idle_right"
-frame_progress = 0.768863
+frame_progress = 0.496556
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_ceaqc")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+radius = 20.0
 debug_enabled = true
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_node_state")]
