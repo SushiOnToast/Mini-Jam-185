@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://i3sp2jfi6rg1" path="res://scenes/characters/player.tscn" id="1_mj2as"]
 [ext_resource type="Texture2D" uid="uid://dfmcxmyq3y8gy" path="res://assets/graphics/Room.png" id="1_xswuy"]
-[ext_resource type="PackedScene" uid="uid://ggxh5qv0ujre" path="res://scenes/characters/npc.tscn" id="3_pucmg"]
+[ext_resource type="Script" uid="uid://cym0el1xi0abu" path="res://scripts/characters/NPC/npc_spawner.gd" id="3_pucmg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pucmg"]
 texture = ExtResource("1_xswuy")
@@ -134,11 +134,16 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_pucmg")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_pucmg"]
-vertices = PackedVector2Array(322.328, 281.172, 372.844, 282, 372.789, 282, 402.578, 323, 337.609, 324.313, 323.703, 322.906, 411, 282.789, 411, 323, 404.633, 373.32, 346.578, 381.273, 327.148, 354.359)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 4, 5, 0, 2, 6), PackedInt32Array(6, 7, 3), PackedInt32Array(4, 3, 8, 9, 10)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(312, 271, 373, 272, 421, 273, 421, 333, 413, 333, 415, 382, 342, 392, 316, 356, 324, 333, 314, 332)])
+vertices = PackedVector2Array(322.328, 281.172, 372.844, 282, 372.789, 282, 403.773, 323, 398.211, 391.922, 361.594, 454.469, 334, 387.008, 334, 323.953, 323.703, 322.922, 411, 282.789, 411, 323)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 4, 5, 6, 7, 2), PackedInt32Array(8, 0, 2, 7), PackedInt32Array(9, 10, 3, 2)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(312, 271, 373, 272, 421, 273, 421, 333, 413, 333, 408, 395, 360, 477, 324, 389, 324, 333, 314, 332)])
 
 [node name="Corridor" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(352, 300)
+zoom = Vector2(5, 5)
+position_smoothing_enabled = true
 
 [node name="Test" type="Node" parent="."]
 
@@ -160,27 +165,18 @@ tile_set = SubResource("TileSet_mus4g")
 z_index = 1
 position = Vector2(354, 300)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(4, 4)
-position_smoothing_enabled = true
-
 [node name="NPCs" type="Node2D" parent="."]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="NPCs"]
 position = Vector2(-15, -7)
 navigation_polygon = SubResource("NavigationPolygon_pucmg")
 
-[node name="NPC" parent="NPCs" instance=ExtResource("3_pucmg")]
-position = Vector2(323, 312)
+[node name="NPCSpawner" type="Node2D" parent="."]
+position = Vector2(348, 407)
+script = ExtResource("3_pucmg")
 
-[node name="NPC2" parent="NPCs" instance=ExtResource("3_pucmg")]
-position = Vector2(351, 332)
+[node name="SpawnTimer" type="Timer" parent="NPCSpawner"]
+wait_time = 7.0
+autostart = true
 
-[node name="NPC3" parent="NPCs" instance=ExtResource("3_pucmg")]
-position = Vector2(381, 293)
-
-[node name="NPC4" parent="NPCs" instance=ExtResource("3_pucmg")]
-position = Vector2(337, 359)
-
-[node name="NPC5" parent="NPCs" instance=ExtResource("3_pucmg")]
-position = Vector2(374, 328)
+[connection signal="timeout" from="NPCSpawner/SpawnTimer" to="NPCSpawner" method="_on_spawn_timer_timeout"]
