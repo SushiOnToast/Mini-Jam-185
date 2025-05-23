@@ -1,10 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://i3sp2jfi6rg1"]
+[gd_scene load_steps=3 format=3 uid="uid://i3sp2jfi6rg1"]
 
 [ext_resource type="Script" uid="uid://bjn6pmn7cmkjv" path="res://scripts/player.gd" id="1_3vyb7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3vyb7"]
+animations = []
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_3vyb7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3vyb7")
+animation = &""
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
