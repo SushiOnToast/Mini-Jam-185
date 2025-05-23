@@ -6,8 +6,6 @@ extends NodeState
 var direction: Vector2
 var animation_direction: String
 
-const SPEED = 125.0
-
 func _on_process(_delta : float) -> void:
 	pass
 
@@ -17,7 +15,7 @@ func _on_physics_process(_delta : float) -> void:
 	animation_direction = GameInputEvent.get_animation_direction(direction)
 	animated_sprite_2d.play("walk_%s" % animation_direction)
 	
-	player.velocity = direction * SPEED
+	player.velocity = direction * Global.PLAYER_SPEED
 	player.move_and_slide()
 	
 
