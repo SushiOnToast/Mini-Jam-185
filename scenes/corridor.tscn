@@ -134,9 +134,9 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_pucmg")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_pucmg"]
-vertices = PackedVector2Array(407.844, 356.5, 319.188, 371, 312.828, 371, 331.039, 357.797, 398.578, 341.07, 406.75, 286.539, 336.82, 328.906, 372.656, 278.203, 319.469, 287.352, 320.789, 311.813)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 4, 3, 6, 7), PackedInt32Array(8, 7, 6, 9)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(317, 280, 373, 268, 418, 279, 409, 339, 424, 364, 320, 381, 282, 381, 322, 352, 326, 332, 315, 316)])
+vertices = PackedVector2Array(322.328, 281.172, 372.844, 282, 372.789, 282, 402.578, 323, 337.609, 324.313, 323.703, 322.906, 411, 282.789, 411, 323, 404.633, 373.32, 346.578, 381.273, 327.148, 354.359)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 4, 5, 0, 2, 6), PackedInt32Array(6, 7, 3), PackedInt32Array(4, 3, 8, 9, 10)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(312, 271, 373, 272, 421, 273, 421, 333, 413, 333, 415, 382, 342, 392, 316, 356, 324, 333, 314, 332)])
 
 [node name="Corridor" type="Node2D"]
 
@@ -174,13 +174,13 @@ navigation_polygon = SubResource("NavigationPolygon_pucmg")
 position = Vector2(323, 312)
 
 [node name="NPC2" parent="NPCs" instance=ExtResource("3_pucmg")]
-position = Vector2(374, 311)
+position = Vector2(351, 332)
 
 [node name="NPC3" parent="NPCs" instance=ExtResource("3_pucmg")]
-position = Vector2(340, 346)
+position = Vector2(381, 293)
 
 [node name="NPC4" parent="NPCs" instance=ExtResource("3_pucmg")]
-position = Vector2(335, 292)
+position = Vector2(337, 359)
 
 [node name="NPC5" parent="NPCs" instance=ExtResource("3_pucmg")]
-position = Vector2(359, 331)
+position = Vector2(374, 328)

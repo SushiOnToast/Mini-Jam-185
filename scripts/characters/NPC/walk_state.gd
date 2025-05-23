@@ -1,4 +1,4 @@
-extends NodeState
+class_name NPCWalk extends NodeState
 
 @export var character: CharacterBody2D
 @export var animated_sprite_2d: AnimatedSprite2D
@@ -7,6 +7,7 @@ extends NodeState
 @export var max_speed: float = 10
 
 var speed: float
+var anim_dir = "down"
 
 func _ready() -> void:
 	navigation_agent_2d.velocity_computed.connect(on_safe_velocity_computed)
@@ -42,6 +43,22 @@ func _on_physics_process(_delta : float) -> void:
 	else:
 		character.velocity = target_direction * speed
 		character.move_and_slide()
+		
+	# animation
+	var dir = target_direction.normalized()
+
+	if abs(dir.x) > abs(dir.y):
+		if dir.x > 0:
+			anim_dir = "right"
+		else:
+			anim_dir = "left"
+	else:
+		if dir.y > 0:
+			anim_dir = "down"
+		else:
+			anim_dir = "up"
+	
+	animated_sprite_2d.play("walk_%s" % anim_dir)
 	
 func on_safe_velocity_computed(safe_velocity: Vector2) -> void:
 	character.velocity = safe_velocity
@@ -54,7 +71,7 @@ func _on_next_transitions() -> void:
 
 
 func _on_enter() -> void:
-	animated_sprite_2d.play("walk")
+	animated_sprite_2d.play("walk_down")
 
 
 func _on_exit() -> void:
