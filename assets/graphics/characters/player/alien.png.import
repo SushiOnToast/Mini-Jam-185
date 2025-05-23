@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csfp6dmkivdn0"
-path="res://.godot/imported/idlealien.png-2f342f63b015b90f1b9dc9ea625882f6.ctex"
+uid="uid://bnpablcdsspic"
+path="res://.godot/imported/alien.png-ba77bd4729402471e692b914c5598158.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/idlealien.png"
-dest_files=["res://.godot/imported/idlealien.png-2f342f63b015b90f1b9dc9ea625882f6.ctex"]
+source_file="res://assets/graphics/characters/player/alien.png"
+dest_files=["res://.godot/imported/alien.png-ba77bd4729402471e692b914c5598158.ctex"]
 
 [params]
 

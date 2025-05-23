@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0k8f1qv40cs3"
-path="res://.godot/imported/characteridle.png-762dbef0091d41bd3edd8b3f481b331c.ctex"
+uid="uid://csfp6dmkivdn0"
+path="res://.godot/imported/idlealien.png-896e2d4362d713cf4ed831d294b31caa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/characters/player/characteridle.png"
-dest_files=["res://.godot/imported/characteridle.png-762dbef0091d41bd3edd8b3f481b331c.ctex"]
+source_file="res://assets/graphics/characters/player/idlealien.png"
+dest_files=["res://.godot/imported/idlealien.png-896e2d4362d713cf4ed831d294b31caa.ctex"]
 
 [params]
 
