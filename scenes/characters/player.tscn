@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://csfp6dmkivdn0" path="res://assets/graphics/characters/player/idlealien.png" id="1_atpat"]
 [ext_resource type="Texture2D" uid="uid://bnpablcdsspic" path="res://assets/graphics/characters/player/alien.png" id="2_kqtwu"]
 [ext_resource type="Script" uid="uid://dnkejftxljb5u" path="res://scripts/state_machine/node_state_machine.gd" id="4_atpat"]
-[ext_resource type="Script" uid="uid://b8pwg4si1hn0t" path="res://scripts/player/walk_state.gd" id="5_atpat"]
-[ext_resource type="Script" uid="uid://b72exyc46sqmy" path="res://scripts/player/idle_state.gd" id="5_kqtwu"]
+[ext_resource type="Script" uid="uid://b8pwg4si1hn0t" path="res://scripts/characters/player/walk_state.gd" id="5_atpat"]
+[ext_resource type="Script" uid="uid://b72exyc46sqmy" path="res://scripts/characters/player/idle_state.gd" id="5_kqtwu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6eyoc"]
 atlas = ExtResource("1_atpat")
