@@ -32,7 +32,8 @@ func _on_process(_delta : float) -> void:
 
 
 func _on_physics_process(_delta : float) -> void:
-	var target_position: Vector2 = npc.target_position
+	navigation_agent_2d.target_position = npc.target_position
+	var target_position: Vector2 = navigation_agent_2d.target_position
 	var target_direction: Vector2 = character.global_position.direction_to(target_position)
 	
 	var velocity: Vector2 = target_direction * speed

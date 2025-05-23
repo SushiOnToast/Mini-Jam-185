@@ -285,7 +285,7 @@ script = ExtResource("1_urmqq")
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_thqvo")
 animation = &"idle_right"
-frame_progress = 0.647882
+frame_progress = 0.400219
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4)
