@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=4 uid="uid://c80sux3viw6lm"]
+[gd_scene load_steps=8 format=4 uid="uid://c80sux3viw6lm"]
 
 [ext_resource type="PackedScene" uid="uid://i3sp2jfi6rg1" path="res://scenes/characters/player.tscn" id="1_mj2as"]
 [ext_resource type="Texture2D" uid="uid://dfmcxmyq3y8gy" path="res://assets/graphics/Room.png" id="1_xswuy"]
+[ext_resource type="Script" uid="uid://cym0el1xi0abu" path="res://scripts/characters/NPC/npc_spawner.gd" id="3_pucmg"]
+[ext_resource type="Script" uid="uid://bllmx1wqd1ox2" path="res://scripts/characters/npc/queue_manager.gd" id="4_mus4g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pucmg"]
 texture = ExtResource("1_xswuy")
@@ -132,7 +134,17 @@ texture = ExtResource("1_xswuy")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_pucmg")
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_pucmg"]
+vertices = PackedVector2Array(322.328, 281.172, 372.844, 282, 372.789, 282, 401.461, 323, 419.406, 447.648, 369.609, 500.656, 332.047, 440.227, 334.172, 323.969, 323.703, 322.922, 411, 282.789, 411, 323)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 4, 5, 6, 7, 2), PackedInt32Array(8, 0, 2, 7), PackedInt32Array(3, 2, 9, 10)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(312, 271, 373, 272, 421, 273, 421, 333, 413, 333, 430, 451, 368, 517, 322, 443, 324, 333, 314, 332)])
+
 [node name="Corridor" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(352, 300)
+zoom = Vector2(5, 5)
+position_smoothing_enabled = true
 
 [node name="Test" type="Node" parent="."]
 
@@ -154,6 +166,36 @@ tile_set = SubResource("TileSet_mus4g")
 z_index = 1
 position = Vector2(354, 300)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(4, 4)
-position_smoothing_enabled = true
+[node name="NPCs" type="Node2D" parent="."]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="NPCs"]
+position = Vector2(-15, -7)
+navigation_polygon = SubResource("NavigationPolygon_pucmg")
+
+[node name="NPCSpawner" type="Node2D" parent="."]
+position = Vector2(348, 433)
+script = ExtResource("3_pucmg")
+
+[node name="SpawnTimer" type="Timer" parent="NPCSpawner"]
+wait_time = 7.0
+autostart = true
+
+[node name="QueueManager" type="Node2D" parent="."]
+script = ExtResource("4_mus4g")
+
+[node name="QueueSpace1" type="Marker2D" parent="QueueManager"]
+position = Vector2(351, 343)
+
+[node name="QueueSpace2" type="Marker2D" parent="QueueManager"]
+position = Vector2(351, 360)
+
+[node name="QueueSpace3" type="Marker2D" parent="QueueManager"]
+position = Vector2(351, 378)
+
+[node name="QueueSpace4" type="Marker2D" parent="QueueManager"]
+position = Vector2(351, 395)
+
+[node name="QueueSpace5" type="Marker2D" parent="QueueManager"]
+position = Vector2(351, 416)
+
+[connection signal="timeout" from="NPCSpawner/SpawnTimer" to="NPCSpawner" method="_on_spawn_timer_timeout"]
