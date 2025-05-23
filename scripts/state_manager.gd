@@ -53,7 +53,7 @@ func switch_to(scene_path: String, scene_key: String) -> void:
 	transitioning = false
 	
 func initialize() -> void:
-	switch_to("res://scenes/corridor.tscn", "Corridor")
+	pass
 	
 func show_menu() -> void:
 	#switch_to(START_MENU_PATH, "StartMenu")
