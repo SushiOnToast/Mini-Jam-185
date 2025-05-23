@@ -1,10 +1,13 @@
-class_name NPCWalk extends NodeState
+extends NodeState
+class_name NPCWalk
 
 @export var character: CharacterBody2D
 @export var animated_sprite_2d: AnimatedSprite2D
 @export var navigation_agent_2d: NavigationAgent2D
 @export var min_speed: float = 5.0
 @export var max_speed: float = 10
+
+@onready var npc: NPC = $"../.."
 
 var speed: float
 var anim_dir = "down"
@@ -29,11 +32,7 @@ func _on_process(_delta : float) -> void:
 
 
 func _on_physics_process(_delta : float) -> void:
-	if navigation_agent_2d.is_navigation_finished():
-		set_movement_target()
-		return
-	
-	var target_position: Vector2 = navigation_agent_2d.get_next_path_position()
+	var target_position: Vector2 = npc.target_position
 	var target_direction: Vector2 = character.global_position.direction_to(target_position)
 	
 	var velocity: Vector2 = target_direction * speed

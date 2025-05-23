@@ -1,6 +1,7 @@
-[gd_scene load_steps=40 format=3 uid="uid://ggxh5qv0ujre"]
+[gd_scene load_steps=41 format=3 uid="uid://ggxh5qv0ujre"]
 
 [ext_resource type="Texture2D" uid="uid://dy3dsv4kfjgbb" path="res://assets/graphics/characters/npcs/npc2.png" id="1_01k3j"]
+[ext_resource type="Script" uid="uid://bp5ybl3ykgde6" path="res://scripts/characters/npc/npc.gd" id="1_urmqq"]
 [ext_resource type="Texture2D" uid="uid://cda13rw70yuy4" path="res://assets/graphics/characters/npcs/npc2walk.png" id="2_urpkq"]
 [ext_resource type="Script" uid="uid://dnkejftxljb5u" path="res://scripts/state_machine/node_state_machine.gd" id="3_01k3j"]
 [ext_resource type="Script" uid="uid://suis6escc673" path="res://scripts/characters/NPC/idle_state.gd" id="4_urpkq"]
@@ -278,12 +279,13 @@ radius = 4.0
 
 [node name="NPC" type="CharacterBody2D"]
 z_index = 1
+script = ExtResource("1_urmqq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_thqvo")
 animation = &"idle_right"
-frame_progress = 0.66643
+frame_progress = 0.647882
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4)
