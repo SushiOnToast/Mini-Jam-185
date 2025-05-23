@@ -1,7 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://ggxh5qv0ujre"]
+[gd_scene load_steps=16 format=3 uid="uid://ggxh5qv0ujre"]
 
 [ext_resource type="Texture2D" uid="uid://csfp6dmkivdn0" path="res://assets/graphics/characters/player/idlealien.png" id="1_ceaqc"]
 [ext_resource type="Texture2D" uid="uid://bnpablcdsspic" path="res://assets/graphics/characters/player/alien.png" id="2_84hc2"]
+[ext_resource type="Script" uid="uid://dnkejftxljb5u" path="res://scripts/state_machine/node_state_machine.gd" id="3_01k3j"]
+[ext_resource type="Script" uid="uid://suis6escc673" path="res://scripts/characters/NPC/idle_state.gd" id="4_urpkq"]
+[ext_resource type="Script" uid="uid://cpfgylvbfxxap" path="res://scripts/characters/NPC/walk_state.gd" id="5_urpkq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_84hc2"]
 atlas = ExtResource("1_ceaqc")
@@ -76,6 +79,7 @@ animations = [{
 radius = 3.0
 
 [node name="NPC" type="CharacterBody2D"]
+z_index = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2.38419e-07, -5)
@@ -87,3 +91,21 @@ autoplay = "idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3)
 shape = SubResource("CircleShape2D_ceaqc")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_node_state")]
+script = ExtResource("3_01k3j")
+initial_node_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("character", "animated_sprite_2d")]
+script = ExtResource("4_urpkq")
+character = NodePath("../..")
+animated_sprite_2d = NodePath("../../AnimatedSprite2D")
+
+[node name="Walk" type="Node" parent="StateMachine" node_paths=PackedStringArray("character", "animated_sprite_2d", "navigation_agent_2d")]
+script = ExtResource("5_urpkq")
+character = NodePath("../..")
+animated_sprite_2d = NodePath("../../AnimatedSprite2D")
+navigation_agent_2d = NodePath("../../NavigationAgent2D")
