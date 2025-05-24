@@ -75,4 +75,3 @@ func _become_angry() -> void:
 	is_waiting = false
 	progress_bar.visible = false
 	print("NPC got angry!")  # Replace with your own logic
-	sprite.play("angry")  # Optional: Play an angry animation

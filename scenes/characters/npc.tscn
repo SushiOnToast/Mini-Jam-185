@@ -8,7 +8,10 @@
 [ext_resource type="Script" uid="uid://cpfgylvbfxxap" path="res://scripts/characters/NPC/walk_state.gd" id="5_urpkq"]
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_urmqq"]
 bg_color = Color(0.027451, 0.0941176, 0.129412, 1)
 expand_margin_left = 1.0
