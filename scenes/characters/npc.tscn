@@ -288,8 +288,7 @@ debug_enabled = true
 visible = false
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_thqvo")
-animation = &"idle_right"
-frame_progress = 0.709005
+animation = &"idle_down"
 
 [node name="Hair" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
