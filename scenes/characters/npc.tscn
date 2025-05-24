@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://ggxh5qv0ujre"]
+[gd_scene load_steps=43 format=3 uid="uid://ggxh5qv0ujre"]
 
 [ext_resource type="Script" uid="uid://bp5ybl3ykgde6" path="res://scripts/characters/NPC/npc.gd" id="1_urmqq"]
 [ext_resource type="Texture2D" uid="uid://bhu331rtrcp0q" path="res://assets/graphics/characters/npcs/npc1.png" id="2_urmqq"]
@@ -7,6 +7,34 @@
 [ext_resource type="Script" uid="uid://suis6escc673" path="res://scripts/characters/NPC/idle_state.gd" id="4_urpkq"]
 [ext_resource type="Script" uid="uid://cpfgylvbfxxap" path="res://scripts/characters/NPC/walk_state.gd" id="5_urpkq"]
 
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+=======
+>>>>>>> Stashed changes
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_urmqq"]
+bg_color = Color(0.027451, 0.0941176, 0.129412, 1)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m3kmy"]
+bg_color = Color(0.52549, 0.752941, 0.423529, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urpkq"]
+atlas = ExtResource("1_01k3j")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urmqq"]
+atlas = ExtResource("1_01k3j")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3kmy"]
+atlas = ExtResource("1_01k3j")
+region = Rect2(32, 0, 16, 16)
+
+>>>>>>> Stashed changes
 [sub_resource type="AtlasTexture" id="AtlasTexture_l1bgn"]
 atlas = ExtResource("2_urmqq")
 region = Rect2(0, 0, 16, 16)
@@ -280,6 +308,19 @@ radius = 4.0
 [node name="NPC" type="CharacterBody2D"]
 z_index = 1
 script = ExtResource("1_urmqq")
+angry_time_max = 7.0
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(20, 0)
+offset_left = -10.0
+offset_top = -22.0
+offset_right = 10.0
+offset_bottom = -18.0
+size_flags_horizontal = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_urmqq")
+theme_override_styles/fill = SubResource("StyleBoxFlat_m3kmy")
+value = 10.0
+show_percentage = false
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 debug_enabled = true
@@ -307,7 +348,7 @@ shape = SubResource("CircleShape2D_ceaqc")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_node_state")]
 script = ExtResource("3_01k3j")
-initial_node_state = NodePath("Idle")
+initial_node_state = NodePath("Walk")
 
 [node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("character", "animated_sprite_2d")]
 script = ExtResource("4_urpkq")

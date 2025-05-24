@@ -7,6 +7,8 @@ extends NodeState
 @onready var idle_state_timer: Timer = Timer.new()
 @onready var walk: NPCWalk = $"../Walk"
 
+@onready var npc: NPC = $"../.."
+
 var idle_state_timeout: bool = false
 
 func _ready() -> void:
@@ -18,7 +20,7 @@ func _on_process(_delta : float) -> void:
 	animated_sprite_2d.play("idle_%s" % walk.anim_dir)
 
 func _on_physics_process(_delta : float) -> void:
-	pass
+	npc.idle = true
 	
 func _on_next_transitions() -> void:
 	if idle_state_timeout:

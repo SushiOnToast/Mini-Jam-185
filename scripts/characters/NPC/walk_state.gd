@@ -28,7 +28,7 @@ func set_movement_target() -> void:
 	speed = randf_range(min_speed, max_speed)
 	
 func _on_process(_delta : float) -> void:
-	pass
+	npc.idle = false
 
 
 func _on_physics_process(_delta : float) -> void:
