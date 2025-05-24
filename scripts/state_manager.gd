@@ -68,3 +68,18 @@ func show_pause() -> void:
 	
 func resume() -> void:
 	switch_to(prev_scene_path, prev_scene.name)
+	
+func reset_state():
+	for scene in saved_scenes.values():
+		scene.queue_free()
+	saved_scenes.clear()
+
+	if current_scene:
+		remove_child(current_scene)
+		current_scene.queue_free()
+		current_scene = null
+		current_scene_path = ""
+
+	prev_scene = null
+	prev_scene_path = ""
+	transitioning = false

@@ -19,7 +19,7 @@ signal time_tick_day(day: int)
 
 func _ready() -> void:
 	set_initial_time()
-	
+
 func _process(delta: float) -> void:
 	time += delta * game_speed  # Add real-time * speed to in-game minutes
 	game_time.emit(time)
@@ -27,7 +27,10 @@ func _process(delta: float) -> void:
 
 func set_initial_time() -> void:
 	time = (initial_day * MINUTES_PER_DAY) + (initial_hour * MINUTES_PER_HOUR) + initial_minute
-	
+	current_minute = -1
+	current_day = int(time / MINUTES_PER_DAY)
+	recalculate_time()
+
 func recalculate_time() -> void:
 	var total_minutes: int = int(time)
 	var day: int = int(total_minutes / MINUTES_PER_DAY)
@@ -42,3 +45,10 @@ func recalculate_time() -> void:
 	if current_day != day:
 		current_day = day
 		time_tick_day.emit(day)
+
+# === RESET FUNCTION ===
+func reset() -> void:
+	time = 0.0
+	current_minute = -1
+	current_day = 0
+	set_initial_time()

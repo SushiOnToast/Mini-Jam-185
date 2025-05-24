@@ -74,4 +74,4 @@ func _update_angry_timer(delta: float) -> void:
 func _become_angry() -> void:
 	is_waiting = false
 	progress_bar.visible = false
-	print("NPC got angry!")  # Replace with your own logic
+	Global.num_angry += 1

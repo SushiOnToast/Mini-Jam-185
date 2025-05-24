@@ -11,3 +11,7 @@ var stall_status: Dictionary = {
 	"male": false,
 	"female": false
 }
+
+# game state
+
+var num_angry = 0
