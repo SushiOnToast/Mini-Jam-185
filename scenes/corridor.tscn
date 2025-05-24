@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=4 uid="uid://c80sux3viw6lm"]
+[gd_scene load_steps=11 format=4 uid="uid://c80sux3viw6lm"]
 
 [ext_resource type="PackedScene" uid="uid://i3sp2jfi6rg1" path="res://scenes/characters/player.tscn" id="1_mj2as"]
 [ext_resource type="Texture2D" uid="uid://dfmcxmyq3y8gy" path="res://assets/graphics/Room.png" id="1_xswuy"]
 [ext_resource type="Script" uid="uid://cym0el1xi0abu" path="res://scripts/characters/NPC/npc_spawner.gd" id="3_pucmg"]
 [ext_resource type="Script" uid="uid://bllmx1wqd1ox2" path="res://scripts/characters/NPC/queue_manager.gd" id="4_mus4g"]
 [ext_resource type="Script" uid="uid://di04gqgp30gjb" path="res://scripts/stalls/stall_manager.gd" id="5_7w20u"]
+[ext_resource type="PackedScene" uid="uid://r21x3ajb2ddw" path="res://scenes/ui.tscn" id="6_n8bhm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pucmg"]
 texture = ExtResource("1_xswuy")
@@ -145,6 +146,11 @@ size = Vector2(5, 40)
 
 [node name="Corridor" type="Node2D"]
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(352, 284)
+zoom = Vector2(5, 5)
+position_smoothing_enabled = true
+
 [node name="Test" type="Node" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="Test"]
@@ -164,11 +170,6 @@ tile_set = SubResource("TileSet_mus4g")
 [node name="Player" parent="." instance=ExtResource("1_mj2as")]
 z_index = 1
 position = Vector2(354, 300)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(-2, 0)
-zoom = Vector2(5, 5)
-position_smoothing_enabled = true
 
 [node name="NPCs" type="Node2D" parent="."]
 
@@ -248,6 +249,8 @@ shape = SubResource("RectangleShape2D_7w20u")
 
 [node name="StallTimer" type="Timer" parent="StallManager"]
 wait_time = 7.0
+
+[node name="UI" parent="." instance=ExtResource("6_n8bhm")]
 
 [connection signal="timeout" from="NPCSpawner/SpawnTimer" to="NPCSpawner" method="_on_spawn_timer_timeout"]
 [connection signal="body_entered" from="StallManager/MaleDoor" to="StallManager" method="_on_male_door_body_entered"]
