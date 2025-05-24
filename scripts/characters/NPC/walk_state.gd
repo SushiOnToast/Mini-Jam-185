@@ -9,8 +9,6 @@ class_name NPCWalk
 
 @onready var npc: NPC = $"../.."
 
-var set_occupied = false
-
 var speed: float
 var anim_dir = "down"
 
@@ -25,9 +23,8 @@ func character_setup() -> void:
 	set_movement_target()
 	
 func set_movement_target() -> void:
-	if npc.queue_pos == 0:
-		npc.target_position = npc.door_pos
-		navigation_agent_2d.target_position = npc.target_position
+	var target_position: Vector2 = NavigationServer2D.map_get_random_point(navigation_agent_2d.get_navigation_map(), navigation_agent_2d.navigation_layers, false)
+	navigation_agent_2d.target_position = target_position
 	speed = randf_range(min_speed, max_speed)
 	
 func _on_process(_delta : float) -> void:
@@ -35,9 +32,6 @@ func _on_process(_delta : float) -> void:
 
 
 func _on_physics_process(_delta : float) -> void:
-	if navigation_agent_2d.navigation_finished:
-		set_movement_target()	
-	
 	navigation_agent_2d.target_position = npc.target_position
 	var target_position: Vector2 = navigation_agent_2d.target_position
 	var target_direction: Vector2 = character.global_position.direction_to(target_position)
@@ -71,12 +65,10 @@ func on_safe_velocity_computed(safe_velocity: Vector2) -> void:
 	character.move_and_slide()
 
 func _on_next_transitions() -> void:
+	if npc.dragging:
+		character.velocity = Vector2.ZERO
+		transition.emit("Idle")
 	if navigation_agent_2d.is_navigation_finished():
-		if npc.queue_pos == 0 and not set_occupied:
-			set_occupied = true
-			Global.stall_status["male"] = true
-			#print("set bathroom status")
-			npc.queue_free()
 		character.velocity = Vector2.ZERO
 		transition.emit("Idle")
 

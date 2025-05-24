@@ -25,6 +25,18 @@ window/size/viewport_width=800
 window/size/viewport_height=800
 window/layer_1=""
 
+[file_customization]
+
+folder_colors={
+"res://assets/": "red",
+"res://scenes/": "orange",
+"res://scripts/": "yellow",
+"res://scripts/characters/NPC/": "green",
+"res://scripts/characters/player/": "teal",
+"res://scripts/stalls/": "blue",
+"res://scripts/state_machine/": "purple"
+}
+
 [input]
 
 up={

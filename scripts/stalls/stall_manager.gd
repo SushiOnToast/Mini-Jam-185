@@ -9,11 +9,15 @@ func _process(delta: float) -> void:
 	if Global.stall_status["male"] and not set_timer:
 		set_timer = true
 		stall_timer.start()
-		print("occupied")
 
 func _on_stall_timer_timeout() -> void:
 	Global.stall_status["male"] = false
 	set_timer = false
 	queue_manager.remove_front = false
-	print("free")
 	
+func _on_male_door_body_entered(body: CharacterBody2D) -> void:
+	if not Global.stall_status["male"]:
+		Global.stall_status["male"] = true
+		body.queue_free()
+	else:
+		print("Occupied!")

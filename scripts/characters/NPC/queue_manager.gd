@@ -2,7 +2,7 @@ extends Node2D
 class_name QueueManager
 
 @onready var npc_list: Node2D = $"../NPCs"
-@onready var male_door: ColorRect = $"../StallManager/MaleDoor"
+@onready var male_door: Area2D = $"../StallManager/MaleDoor"
 
 var remove_front = false
 
