@@ -15,7 +15,7 @@ func _on_stall_timer_timeout() -> void:
 	set_timer = false
 	queue_manager.remove_front = false
 	
-func _on_male_door_body_entered(body: CharacterBody2D) -> void:
+func _on_male_door_body_entered(body: NPC) -> void:
 	if not Global.stall_status["male"]:
 		Global.stall_status["male"] = true
 		body.queue_free()
