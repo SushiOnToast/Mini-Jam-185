@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=4 uid="uid://c80sux3viw6lm"]
+[gd_scene load_steps=9 format=4 uid="uid://c80sux3viw6lm"]
 
 [ext_resource type="PackedScene" uid="uid://i3sp2jfi6rg1" path="res://scenes/characters/player.tscn" id="1_mj2as"]
 [ext_resource type="Texture2D" uid="uid://dfmcxmyq3y8gy" path="res://assets/graphics/Room.png" id="1_xswuy"]
 [ext_resource type="Script" uid="uid://cym0el1xi0abu" path="res://scripts/characters/NPC/npc_spawner.gd" id="3_pucmg"]
-[ext_resource type="Script" uid="uid://bllmx1wqd1ox2" path="res://scripts/characters/npc/queue_manager.gd" id="4_mus4g"]
+[ext_resource type="Script" uid="uid://bllmx1wqd1ox2" path="res://scripts/characters/NPC/queue_manager.gd" id="4_mus4g"]
+[ext_resource type="Script" uid="uid://di04gqgp30gjb" path="res://scripts/stall_manager.gd" id="5_7w20u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pucmg"]
 texture = ExtResource("1_xswuy")
@@ -187,21 +188,44 @@ script = ExtResource("4_mus4g")
 position = Vector2(351, 340)
 
 [node name="QueueSpace2" type="Marker2D" parent="QueueManager"]
-position = Vector2(351, 351)
+position = Vector2(351, 340)
 
 [node name="QueueSpace3" type="Marker2D" parent="QueueManager"]
-position = Vector2(351, 361)
+position = Vector2(351, 350)
 
 [node name="QueueSpace4" type="Marker2D" parent="QueueManager"]
-position = Vector2(351, 372)
+position = Vector2(351, 361)
 
 [node name="QueueSpace5" type="Marker2D" parent="QueueManager"]
-position = Vector2(351, 382)
+position = Vector2(351, 371)
 
 [node name="QueueSpace6" type="Marker2D" parent="QueueManager"]
-position = Vector2(351, 393)
+position = Vector2(351, 382)
 
 [node name="QueueSpace7" type="Marker2D" parent="QueueManager"]
-position = Vector2(351, 404)
+position = Vector2(351, 393)
+
+[node name="StallManager" type="Node2D" parent="."]
+script = ExtResource("5_7w20u")
+
+[node name="MaleDoor" type="ColorRect" parent="StallManager"]
+z_index = 1
+offset_left = 295.0
+offset_top = 270.0
+offset_right = 300.0
+offset_bottom = 310.0
+color = Color(0.52549, 0.752941, 0.423529, 1)
+
+[node name="FemaleDoor" type="ColorRect" parent="StallManager"]
+z_index = 1
+offset_left = 403.0
+offset_top = 270.0
+offset_right = 408.0
+offset_bottom = 310.0
+color = Color(0.52549, 0.752941, 0.423529, 1)
+
+[node name="StallTimer" type="Timer" parent="StallManager"]
+wait_time = 7.0
 
 [connection signal="timeout" from="NPCSpawner/SpawnTimer" to="NPCSpawner" method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="StallManager/StallTimer" to="StallManager" method="_on_stall_timer_timeout"]

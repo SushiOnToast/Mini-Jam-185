@@ -21,7 +21,7 @@ func _on_physics_process(_delta : float) -> void:
 	pass
 	
 func _on_next_transitions() -> void:
-	if idle_state_timeout:
+	if idle_state_timeout and !Global.stall_status["male"]:
 		transition.emit("Walk")
 
 
