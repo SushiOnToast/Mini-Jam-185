@@ -290,12 +290,6 @@ sprite_frames = SubResource("SpriteFrames_thqvo")
 animation = &"idle_right"
 frame_progress = 0.709005
 
-[node name="HoverArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HoverArea"]
-position = Vector2(0, -4)
-shape = SubResource("CircleShape2D_ceaqc")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_ceaqc")

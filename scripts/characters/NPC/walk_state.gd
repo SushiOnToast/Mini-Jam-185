@@ -65,6 +65,9 @@ func on_safe_velocity_computed(safe_velocity: Vector2) -> void:
 	character.move_and_slide()
 
 func _on_next_transitions() -> void:
+	if npc.dragging:
+		character.velocity = Vector2.ZERO
+		transition.emit("Idle")
 	if navigation_agent_2d.is_navigation_finished():
 		character.velocity = Vector2.ZERO
 		transition.emit("Idle")

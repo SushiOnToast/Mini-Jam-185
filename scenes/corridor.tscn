@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=4 uid="uid://c80sux3viw6lm"]
+[gd_scene load_steps=10 format=4 uid="uid://c80sux3viw6lm"]
 
 [ext_resource type="PackedScene" uid="uid://i3sp2jfi6rg1" path="res://scenes/characters/player.tscn" id="1_mj2as"]
 [ext_resource type="Texture2D" uid="uid://dfmcxmyq3y8gy" path="res://assets/graphics/Room.png" id="1_xswuy"]
 [ext_resource type="Script" uid="uid://cym0el1xi0abu" path="res://scripts/characters/NPC/npc_spawner.gd" id="3_pucmg"]
-[ext_resource type="Script" uid="uid://bllmx1wqd1ox2" path="res://scripts/characters/npc/queue_manager.gd" id="4_mus4g"]
+[ext_resource type="Script" uid="uid://bllmx1wqd1ox2" path="res://scripts/characters/NPC/queue_manager.gd" id="4_mus4g"]
+[ext_resource type="Script" uid="uid://di04gqgp30gjb" path="res://scripts/stalls/stall_manager.gd" id="5_7w20u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pucmg"]
 texture = ExtResource("1_xswuy")
@@ -139,12 +140,10 @@ vertices = PackedVector2Array(322.328, 281.172, 372.844, 282, 372.789, 282, 401.
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 4, 5, 6, 7, 2), PackedInt32Array(8, 0, 2, 7), PackedInt32Array(3, 2, 9, 10)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(312, 271, 373, 272, 421, 273, 421, 333, 413, 333, 430, 451, 368, 517, 322, 443, 324, 333, 314, 332)])
 
-[node name="Corridor" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7w20u"]
+size = Vector2(5, 40)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(352, 300)
-zoom = Vector2(5, 5)
-position_smoothing_enabled = true
+[node name="Corridor" type="Node2D"]
 
 [node name="Test" type="Node" parent="."]
 
@@ -165,6 +164,11 @@ tile_set = SubResource("TileSet_mus4g")
 [node name="Player" parent="." instance=ExtResource("1_mj2as")]
 z_index = 1
 position = Vector2(354, 300)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(-2, 0)
+zoom = Vector2(5, 5)
+position_smoothing_enabled = true
 
 [node name="NPCs" type="Node2D" parent="."]
 
@@ -187,21 +191,64 @@ script = ExtResource("4_mus4g")
 position = Vector2(351, 340)
 
 [node name="QueueSpace2" type="Marker2D" parent="QueueManager"]
-position = Vector2(351, 351)
+position = Vector2(351, 349)
 
 [node name="QueueSpace3" type="Marker2D" parent="QueueManager"]
-position = Vector2(351, 361)
+position = Vector2(351, 359)
 
 [node name="QueueSpace4" type="Marker2D" parent="QueueManager"]
-position = Vector2(351, 372)
+position = Vector2(351, 370)
 
 [node name="QueueSpace5" type="Marker2D" parent="QueueManager"]
-position = Vector2(351, 382)
+position = Vector2(351, 380)
 
 [node name="QueueSpace6" type="Marker2D" parent="QueueManager"]
-position = Vector2(351, 393)
+position = Vector2(351, 391)
 
 [node name="QueueSpace7" type="Marker2D" parent="QueueManager"]
-position = Vector2(351, 404)
+position = Vector2(351, 402)
+
+[node name="StallManager" type="Node2D" parent="."]
+script = ExtResource("5_7w20u")
+
+[node name="MaleDoor" type="Area2D" parent="StallManager"]
+z_index = 1
+position = Vector2(298, 290)
+
+[node name="MaleDoor" type="ColorRect" parent="StallManager/MaleDoor"]
+z_index = 1
+offset_left = -3.0
+offset_top = -20.0
+offset_right = 2.0
+offset_bottom = 20.0
+color = Color(0.52549, 0.752941, 0.423529, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StallManager/MaleDoor"]
+z_index = 1
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_7w20u")
+
+[node name="FemaleDoor" type="Area2D" parent="StallManager"]
+z_index = 1
+position = Vector2(406, 291)
+
+[node name="FemaleDoor" type="ColorRect" parent="StallManager/FemaleDoor"]
+z_index = 1
+offset_left = -3.0
+offset_top = -20.0
+offset_right = 2.0
+offset_bottom = 20.0
+color = Color(0.52549, 0.752941, 0.423529, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StallManager/FemaleDoor"]
+z_index = 1
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_7w20u")
+
+[node name="StallTimer" type="Timer" parent="StallManager"]
+wait_time = 7.0
 
 [connection signal="timeout" from="NPCSpawner/SpawnTimer" to="NPCSpawner" method="_on_spawn_timer_timeout"]
+[connection signal="body_entered" from="StallManager/MaleDoor" to="StallManager" method="_on_male_door_body_entered"]
+[connection signal="timeout" from="StallManager/StallTimer" to="StallManager" method="_on_stall_timer_timeout"]
