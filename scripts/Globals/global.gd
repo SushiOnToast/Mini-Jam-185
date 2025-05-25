@@ -25,3 +25,5 @@ var num_angry := 0:
 var spawn_timer_wait_time: float = 7.0
 
 var clear_npcs = false
+
+var played_day_one = false

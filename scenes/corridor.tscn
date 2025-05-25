@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://di04gqgp30gjb" path="res://scripts/stalls/stall_manager.gd" id="5_7w20u"]
 [ext_resource type="Texture2D" uid="uid://cpb6ehqn3ns8q" path="res://assets/graphics/shelf.png" id="5_so7gr"]
 [ext_resource type="PackedScene" uid="uid://cfhqyahv4iij6" path="res://scenes/UI/ui.tscn" id="6_n8bhm"]
-[ext_resource type="PackedScene" uid="uid://dx0wp12dx4y0d" path="res://scenes/tp_zone.tscn" id="11_f323m"]
+[ext_resource type="PackedScene" uid="uid://bymyqm18cjnjt" path="res://scenes/tp_zone.tscn" id="11_f323m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pucmg"]
 texture = ExtResource("1_xswuy")

@@ -1,10 +1,10 @@
-[gd_scene load_steps=11 format=4 uid="uid://1acrbayns08o"]
+[gd_scene load_steps=11 format=4 uid="uid://dcupy7iyo74xh"]
 
 [ext_resource type="Texture2D" uid="uid://j0wtgwj5yu7h" path="res://assets/graphics/Tilemap.png" id="1_u1jle"]
 [ext_resource type="Texture2D" uid="uid://b7lrn4tb6mvu1" path="res://assets/graphics/tiles.png" id="2_8ff3l"]
 [ext_resource type="Texture2D" uid="uid://cea4qneme71ni" path="res://assets/graphics/bathroomgreen.png" id="3_r1xgg"]
 [ext_resource type="PackedScene" uid="uid://i3sp2jfi6rg1" path="res://scenes/characters/player.tscn" id="4_8ff3l"]
-[ext_resource type="PackedScene" uid="uid://dx0wp12dx4y0d" path="res://scenes/tp_zone.tscn" id="5_r1xgg"]
+[ext_resource type="PackedScene" uid="uid://bymyqm18cjnjt" path="res://scenes/tp_zone.tscn" id="5_r1xgg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u1jle"]
 texture = ExtResource("1_u1jle")
@@ -230,6 +230,13 @@ texture = ExtResource("3_r1xgg")
 sources/0 = SubResource("TileSetAtlasSource_bwl75")
 
 [node name="Bathroom1" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -155.0
+offset_top = -125.0
+offset_right = 161.0
+offset_bottom = 137.0
+color = Color(0.027451, 0.0941176, 0.129412, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(8, -10)

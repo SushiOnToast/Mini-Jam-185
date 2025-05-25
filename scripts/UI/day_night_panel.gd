@@ -8,11 +8,13 @@ extends Control
 @export var speed: int = 150
 
 func _ready() -> void:
-	DayAndNightCycleManager.pause()
-	animation_player.play("show")
-	await animation_player.animation_finished
-	animation_player.play_backwards("show")
-	DayAndNightCycleManager.resume()
+	if not Global.played_day_one:
+		Global.played_day_one = true
+		DayAndNightCycleManager.pause()
+		animation_player.play("show")
+		await animation_player.animation_finished
+		animation_player.play_backwards("show")
+		DayAndNightCycleManager.resume()
 	DayAndNightCycleManager.time_tick.connect(on_time_tick)
 	DayAndNightCycleManager.time_tick_day.connect(on_new_day)  # ← connect day change
 	DayAndNightCycleManager.game_speed = speed
