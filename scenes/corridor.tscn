@@ -377,11 +377,11 @@ texture = ExtResource("5_so7gr")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
-2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-0.015542, 1.04999, 8, 0.987825, 8, 6.9558, 0.0155411, 7.04905)
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0.209438, 1.2599, 8, 1.16203, 8, 6.96892, -0.0189219, 7.13204)
 3:0/0 = 0
-3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 1.14324, 8, 0.987825, 8, 6.9558, -8, 7.08013)
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 1.19466, 8, 1.16203, 8, 6.96892, -8, 6.98009)
 4:0/0 = 0
-4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 1.14324, 0.0155411, 1.23649, 0.0155411, 6.98688, -8, 7.08013)
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 1.16341, -0.145529, 1.28537, 0.260974, 7.26096, -8, 7.01706)
 0:1/0 = 0
 1:1/0 = 0
 2:1/0 = 0
@@ -503,6 +503,8 @@ z_index = 1
 position = Vector2(325, 281)
 rotation = 1.56782
 scale = Vector2(4.07674, 0.480185)
+collision_layer = 2
+collision_mask = 2
 
 [node name="MaleDoor" type="ColorRect" parent="StallManager/MaleDoor"]
 visible = false
@@ -522,6 +524,8 @@ shape = SubResource("RectangleShape2D_7w20u")
 z_index = 1
 position = Vector2(381, 279)
 scale = Vector2(3.84, 0.52)
+collision_layer = 2
+collision_mask = 2
 
 [node name="FemaleDoor" type="ColorRect" parent="StallManager/FemaleDoor"]
 visible = false
