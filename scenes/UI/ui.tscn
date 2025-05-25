@@ -1,16 +1,43 @@
-[gd_scene load_steps=8 format=3 uid="uid://cfhqyahv4iij6"]
+[gd_scene load_steps=13 format=3 uid="uid://cfhqyahv4iij6"]
 
-[ext_resource type="Script" path="res://scripts/day_night_panel.gd" id="1_gdt2y"]
+[ext_resource type="Script" uid="uid://dr24ik1fsywxt" path="res://scripts/UI/day_night_panel.gd" id="1_gdt2y"]
 [ext_resource type="Texture2D" uid="uid://rqy5ofcv0b4l" path="res://assets/UI/heart.png" id="2_yev5y"]
 [ext_resource type="Texture2D" uid="uid://fggtwgp1em81" path="res://assets/UI/day_time_ui_s.png" id="3_gdt2y"]
 [ext_resource type="FontFile" uid="uid://drpxoboluk65q" path="res://assets/fonts/pixelify_sans/static/PixelifySans-Bold.ttf" id="4_8dubc"]
 [ext_resource type="Texture2D" uid="uid://u5veqhbd5e8r" path="res://assets/UI/day_time_ui_lg.png" id="4_wm3ai"]
+[ext_resource type="Script" uid="uid://k5sp4ptcfqcp" path="res://scripts/UI/hearts.gd" id="5_8dubc"]
+[ext_resource type="Script" uid="uid://cd2kje0beov3s" path="res://scripts/UI/heart.gd" id="7_35jxk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wm3ai"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="Theme" id="Theme_8dubc"]
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_wm3ai")
+
+[sub_resource type="Animation" id="Animation_35jxk"]
+resource_name = "lose"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.400751, 0.500751),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tpnoy"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vb61p"]
+_data = {
+&"RESET": SubResource("Animation_tpnoy"),
+&"lose": SubResource("Animation_35jxk")
+}
 
 [node name="UI" type="CanvasLayer"]
 
@@ -99,21 +126,46 @@ offset_bottom = 61.0
 scale = Vector2(1.25, 1.25)
 theme = SubResource("Theme_8dubc")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HealthPanel"]
+[node name="HeartContainer" type="HBoxContainer" parent="HealthPanel"]
 layout_mode = 2
 theme_override_constants/separation = 5
+script = ExtResource("5_8dubc")
 
-[node name="TextureRect" type="TextureRect" parent="HealthPanel/HBoxContainer"]
+[node name="Heart1" type="TextureRect" parent="HealthPanel/HeartContainer" node_paths=PackedStringArray("animation_player")]
 layout_mode = 2
 texture = ExtResource("2_yev5y")
 expand_mode = 3
+script = ExtResource("7_35jxk")
+animation_player = NodePath("AnimationPlayer")
+metadata/_custom_type_script = "uid://cd2kje0beov3s"
 
-[node name="TextureRect2" type="TextureRect" parent="HealthPanel/HBoxContainer"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HealthPanel/HeartContainer/Heart1"]
+libraries = {
+&"": SubResource("AnimationLibrary_vb61p")
+}
+
+[node name="Heart2" type="TextureRect" parent="HealthPanel/HeartContainer" node_paths=PackedStringArray("animation_player")]
 layout_mode = 2
 texture = ExtResource("2_yev5y")
 expand_mode = 3
+script = ExtResource("7_35jxk")
+animation_player = NodePath("AnimationPlayer")
+metadata/_custom_type_script = "uid://cd2kje0beov3s"
 
-[node name="TextureRect3" type="TextureRect" parent="HealthPanel/HBoxContainer"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HealthPanel/HeartContainer/Heart2"]
+libraries = {
+&"": SubResource("AnimationLibrary_vb61p")
+}
+
+[node name="Heart3" type="TextureRect" parent="HealthPanel/HeartContainer" node_paths=PackedStringArray("animation_player")]
 layout_mode = 2
 texture = ExtResource("2_yev5y")
 expand_mode = 3
+script = ExtResource("7_35jxk")
+animation_player = NodePath("AnimationPlayer")
+metadata/_custom_type_script = "uid://cd2kje0beov3s"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HealthPanel/HeartContainer/Heart3"]
+libraries = {
+&"": SubResource("AnimationLibrary_vb61p")
+}

@@ -11,7 +11,6 @@ class_name NPC
 
 # === NODES ===
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
-@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var progress_bar: ProgressBar = $ProgressBar
 
 # === DRAGGING STATE ===
@@ -75,3 +74,4 @@ func _become_angry() -> void:
 	is_waiting = false
 	progress_bar.visible = false
 	Global.num_angry += 1
+	self.queue_free()

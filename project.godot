@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Global="*res://scripts/global.gd"
-DayAndNightCycleManager="*res://scripts/day_and_night_cycle_manager.gd"
+Global="*res://scripts/Globals/global.gd"
+DayAndNightCycleManager="*res://scripts/Globals/day_and_night_cycle_manager.gd"
 
 [display]
 
