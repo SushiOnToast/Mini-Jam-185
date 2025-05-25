@@ -14,4 +14,10 @@ var stall_status: Dictionary = {
 
 # game state
 
-var num_angry = 0
+signal anger_changed
+
+var num_angry := 0:
+	set(value):
+		if value != num_angry:
+			num_angry = value
+			anger_changed.emit()

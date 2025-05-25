@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://cym0el1xi0abu" path="res://scripts/characters/NPC/npc_spawner.gd" id="3_pucmg"]
 [ext_resource type="Script" uid="uid://bllmx1wqd1ox2" path="res://scripts/characters/NPC/queue_manager.gd" id="4_mus4g"]
 [ext_resource type="Script" uid="uid://di04gqgp30gjb" path="res://scripts/stalls/stall_manager.gd" id="5_7w20u"]
-[ext_resource type="PackedScene" uid="uid://cfhqyahv4iij6" path="res://scenes/ui.tscn" id="6_n8bhm"]
+[ext_resource type="PackedScene" uid="uid://cfhqyahv4iij6" path="res://scenes/UI/ui.tscn" id="6_n8bhm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pucmg"]
 texture = ExtResource("1_xswuy")
