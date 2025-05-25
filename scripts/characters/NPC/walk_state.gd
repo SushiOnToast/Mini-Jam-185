@@ -32,6 +32,14 @@ func _on_process(_delta : float) -> void:
 
 
 func _on_physics_process(_delta : float) -> void:
+	if npc.entered_toilet:
+		npc.progress_bar.hide()
+		if npc.used_toilet:
+			npc.is_exiting = true
+			npc.target_position = npc.exit_position
+		else:
+			transition.emit("Idle")
+
 	navigation_agent_2d.target_position = npc.target_position
 	var target_position: Vector2 = navigation_agent_2d.target_position
 	var target_direction: Vector2 = character.global_position.direction_to(target_position)
@@ -69,8 +77,12 @@ func _on_next_transitions() -> void:
 		character.velocity = Vector2.ZERO
 		transition.emit("Idle")
 	if navigation_agent_2d.is_navigation_finished():
-		character.velocity = Vector2.ZERO
-		transition.emit("Idle")
+		if npc.is_exiting:
+			queue_free()
+			return
+		else:
+			character.velocity = Vector2.ZERO
+			transition.emit("Idle")
 
 
 func _on_enter() -> void:

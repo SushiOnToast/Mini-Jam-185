@@ -9,6 +9,12 @@ class_name NPC
 @export var angry_time_max: float = 5.0  # Seconds before NPC gets angry
 @export var idle = false
 
+# === EXITING LOGIC ===
+@export var exit_position: Vector2
+var entered_toilet: bool = false
+var used_toilet: bool = false
+var is_exiting: bool = false
+
 # === NODES ===
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 @onready var progress_bar: ProgressBar = $ProgressBar
@@ -51,10 +57,10 @@ func _handle_drag_motion() -> void:
 
 # === PROCESS ===
 func _process(delta: float) -> void:
-	if is_waiting:
+	if is_waiting and not entered_toilet:
 		_update_angry_timer(delta)
-		
-	if idle and not angry_timer_started:
+
+	if idle and not angry_timer_started and not entered_toilet:
 		start_angry_timer()
 		angry_timer_started = true
 
@@ -67,6 +73,10 @@ func start_angry_timer() -> void:
 	progress_bar.visible = true
 
 func _update_angry_timer(delta: float) -> void:
+	if entered_toilet:
+		stop_angry_timer()
+		return
+
 	angry_time_left -= delta
 	progress_bar.value = (angry_time_left / angry_time_max) * 100.0
 	if angry_time_left <= 0.0:
@@ -77,3 +87,7 @@ func _become_angry() -> void:
 	progress_bar.visible = false
 	Global.num_angry += 1
 	self.queue_free()
+	
+func stop_angry_timer() -> void:
+	is_waiting = false
+	progress_bar.visible = false

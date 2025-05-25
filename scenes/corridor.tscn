@@ -136,20 +136,15 @@ texture = ExtResource("1_xswuy")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_pucmg")
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_pucmg"]
-vertices = PackedVector2Array(322.328, 281.172, 372.844, 282, 372.789, 282, 401.461, 323, 419.406, 447.648, 369.609, 500.656, 332.047, 440.227, 334.172, 323.969, 323.703, 322.922, 411, 282.789, 411, 323)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 4, 5, 6, 7, 2), PackedInt32Array(8, 0, 2, 7), PackedInt32Array(3, 2, 9, 10)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(312, 271, 373, 272, 421, 273, 421, 333, 413, 333, 430, 451, 368, 517, 322, 443, 324, 333, 314, 332)])
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_n8bhm"]
+vertices = PackedVector2Array(491.992, 352.531, 504, 474.328, 239.578, 482.68, 402.078, 357.703, 234.398, 356.781, 329, 354.789, 329, 330.688, 314.742, 329.672, 313.289, 279, 419.406, 279, 421.594, 330.594, 406.453, 331.492)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 2, 4, 5), PackedInt32Array(6, 7, 8, 9, 10, 11), PackedInt32Array(6, 11, 3, 5)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(303, 269, 429, 269, 432, 340, 415, 341, 414, 347, 501, 342, 515, 484, 230, 493, 224, 347, 319, 345, 319, 340, 305, 339)])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7w20u"]
 size = Vector2(5, 40)
 
 [node name="Corridor" type="Node2D"]
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(352, 288)
-zoom = Vector2(5, 5)
-position_smoothing_enabled = true
 
 [node name="Test" type="Node" parent="."]
 
@@ -171,18 +166,23 @@ tile_set = SubResource("TileSet_mus4g")
 z_index = 1
 position = Vector2(354, 300)
 
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(-2, -12)
+zoom = Vector2(5, 5)
+position_smoothing_enabled = true
+
 [node name="NPCs" type="Node2D" parent="."]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="NPCs"]
 position = Vector2(-15, -7)
-navigation_polygon = SubResource("NavigationPolygon_pucmg")
+navigation_polygon = SubResource("NavigationPolygon_n8bhm")
 
 [node name="NPCSpawner" type="Node2D" parent="."]
 position = Vector2(348, 433)
 script = ExtResource("3_pucmg")
 
 [node name="SpawnTimer" type="Timer" parent="NPCSpawner"]
-wait_time = 7.0
+wait_time = 5.0
 autostart = true
 
 [node name="QueueManager" type="Node2D" parent="."]
@@ -253,7 +253,27 @@ wait_time = 7.0
 [node name="FemaleStallTimer" type="Timer" parent="StallManager"]
 wait_time = 7.0
 
+[node name="MaleOccupiedSlot" type="Node2D" parent="StallManager"]
+z_index = 1
+
+[node name="FemaleOccupiedSlot" type="Node2D" parent="StallManager"]
+z_index = 1
+
 [node name="UI" parent="." instance=ExtResource("6_n8bhm")]
+
+[node name="NPCExitManager" type="Node2D" parent="."]
+
+[node name="ExitPoint1" type="Marker2D" parent="NPCExitManager"]
+position = Vector2(246, 387)
+
+[node name="ExitPoint2" type="Marker2D" parent="NPCExitManager"]
+position = Vector2(455, 386)
+
+[node name="DoorExit1" type="Marker2D" parent="NPCExitManager"]
+position = Vector2(388, 292)
+
+[node name="DoorExit2" type="Marker2D" parent="NPCExitManager"]
+position = Vector2(311, 291)
 
 [connection signal="timeout" from="NPCSpawner/SpawnTimer" to="NPCSpawner" method="_on_spawn_timer_timeout"]
 [connection signal="body_entered" from="StallManager/MaleDoor" to="StallManager" method="_on_male_door_body_entered"]
