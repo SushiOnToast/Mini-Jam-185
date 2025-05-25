@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://dfxyfc21q65wx"]
+[gd_scene load_steps=11 format=4 uid="uid://dfxyfc21q65wx"]
 
 [ext_resource type="Texture2D" uid="uid://j0wtgwj5yu7h" path="res://assets/graphics/Tilemap.png" id="1_0rfuu"]
 [ext_resource type="Texture2D" uid="uid://b7lrn4tb6mvu1" path="res://assets/graphics/tiles.png" id="2_dbhsb"]
 [ext_resource type="Texture2D" uid="uid://cea4qneme71ni" path="res://assets/graphics/bathroomgreen.png" id="3_41bja"]
+[ext_resource type="PackedScene" uid="uid://i3sp2jfi6rg1" path="res://scenes/characters/player.tscn" id="4_dbhsb"]
+[ext_resource type="PackedScene" uid="uid://dx0wp12dx4y0d" path="res://scenes/tp_zone.tscn" id="5_41bja"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hty0h"]
 texture = ExtResource("1_0rfuu")
@@ -233,6 +235,19 @@ sources/0 = SubResource("TileSetAtlasSource_pkncw")
 tile_map_data = PackedByteArray("AAD9//z/AAAAAAAAAAD9//3/AAAAAAEAAAD9//7/AAAAAAIAAAD9////AAAAAAIAAAD+//z/AAABAAAAAAD+//3/AAABAAEAAAD///z/AAABAAAAAAD///3/AAABAAEAAAAAAPz/AAABAAAAAAAAAP3/AAABAAEAAAABAPz/AAABAAAAAAABAP3/AAABAAEAAAADAPz/AAACAAAAAAADAP3/AAACAAEAAAADAP7/AAACAAIAAAACAPz/AAABAAAAAAACAP3/AAABAAEAAAD9/wEAAAAAAAcAAAD9/wIAAAAAAAgAAAD+/wIAAAABAAgAAAD//wIAAAABAAgAAAAAAAIAAAABAAgAAAABAAIAAAABAAgAAAACAAIAAAABAAgAAAADAAIAAAACAAgAAAADAAEAAAACAAcAAAADAP//AAACAAcAAAADAAAAAAACAAcAAAD+//7/BAAAAAAAAAD///7/BAABAAAAAAAAAP7/BAAAAAAAAAABAP7/BAABAAAAAAACAP7/BAAAAAAAAAD/////BAAAAAAAAAABAP//BAAAAAAAAAD+/wAABAAAAAAAAAAAAAAABAAAAAAAAAACAAAABAAAAAAAAAD//wEABAAAAAAAAAABAAEABAAAAAAAAAD+////BAABAAAAAAAAAP//BAABAAAAAAD//wAABAABAAAAAAD+/wEABAABAAAAAAAAAAEABAABAAAAAAACAAEABAABAAAAAAABAAAABAABAAAAAAACAP//BAABAAAAAAD9/wAAAAAAAAIAAAA=")
 tile_set = SubResource("TileSet_xk1xr")
 
+[node name="Camera2D" type="Camera2D" parent="TileMapLayer"]
+position = Vector2(9, -13)
+zoom = Vector2(6, 6)
+
 [node name="props" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAD+//3/AAAAAAAAAAD+//7/AAAAAAEAAAABAP3/AAABAAAAAAABAP7/AAABAAEAAAACAP3/AAACAAAAAAACAP7/AAACAAEAAAD///3/AAABAAIAAAD//wAAAAAAAAIAAAA=")
 tile_set = SubResource("TileSet_wnhnf")
+
+[node name="Player" parent="." instance=ExtResource("4_dbhsb")]
+position = Vector2(7, 24)
+
+[node name="TpZone" parent="." instance=ExtResource("5_41bja")]
+z_index = 1
+position = Vector2(13, 31)
+scale = Vector2(0.319998, 0.319998)
+target_scene_path = "res://scenes/corridor.tscn"

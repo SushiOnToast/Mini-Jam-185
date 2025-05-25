@@ -578,6 +578,12 @@ position = Vector2(329, 277)
 scale = Vector2(0.36002, 0.36002)
 target_scene_path = "res://scenes/bathroom1.tscn"
 
+[node name="TpZone2" parent="." instance=ExtResource("11_f323m")]
+z_index = 1
+position = Vector2(386, 277)
+scale = Vector2(0.36002, 0.36002)
+target_scene_path = "res://scenes/bathroom2.tscn"
+
 [connection signal="timeout" from="NPCSpawner/SpawnTimer" to="NPCSpawner" method="_on_spawn_timer_timeout"]
 [connection signal="body_entered" from="StallManager/MaleDoor" to="StallManager" method="_on_male_door_body_entered"]
 [connection signal="body_entered" from="StallManager/FemaleDoor" to="StallManager" method="_on_female_door_body_entered"]
