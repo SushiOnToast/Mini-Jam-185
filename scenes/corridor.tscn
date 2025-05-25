@@ -615,17 +615,21 @@ offset_right = 432.0
 offset_bottom = 370.0
 color = Color(0.027451, 0.0941176, 0.129412, 1)
 
-[node name="TpZone" parent="." instance=ExtResource("11_f323m")]
+[node name="TPZones" type="Node" parent="."]
+
+[node name="Male" parent="TPZones" instance=ExtResource("11_f323m")]
 z_index = 1
 position = Vector2(329, 277)
 scale = Vector2(0.36002, 0.36002)
 target_scene_path = "res://scenes/bathroom1.tscn"
+target_name = "Bathroom1"
 
-[node name="TpZone2" parent="." instance=ExtResource("11_f323m")]
+[node name="Female" parent="TPZones" instance=ExtResource("11_f323m")]
 z_index = 1
 position = Vector2(384, 277)
 scale = Vector2(0.36002, 0.36002)
 target_scene_path = "res://scenes/bathroom2.tscn"
+target_name = "Bathroom2"
 
 [connection signal="timeout" from="NPCSpawner/SpawnTimer" to="NPCSpawner" method="_on_spawn_timer_timeout"]
 [connection signal="body_entered" from="StallManager/Doors/MaleDoor" to="StallManager" method="_on_male_door_body_entered"]

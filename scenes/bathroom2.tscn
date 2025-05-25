@@ -253,8 +253,9 @@ tile_set = SubResource("TileSet_wnhnf")
 [node name="Player" parent="." instance=ExtResource("4_dbhsb")]
 position = Vector2(7, 24)
 
-[node name="TpZone" parent="." instance=ExtResource("5_41bja")]
+[node name="Female" parent="." instance=ExtResource("5_41bja")]
 z_index = 1
 position = Vector2(13, 31)
 scale = Vector2(0.319998, 0.319998)
 target_scene_path = "res://scenes/corridor.tscn"
+target_name = "Corridor"
