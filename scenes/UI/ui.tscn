@@ -49,6 +49,7 @@ offset_top = 2.0
 offset_right = 337.0
 offset_bottom = 42.0
 script = ExtResource("1_gdt2y")
+speed = 10
 
 [node name="DayCounter" type="TextureRect" parent="DayNightPanel"]
 layout_mode = 1
@@ -64,7 +65,6 @@ offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_gdt2y")
-expand_mode = 3
 
 [node name="DayLabel" type="Label" parent="DayNightPanel/DayCounter"]
 layout_mode = 1
