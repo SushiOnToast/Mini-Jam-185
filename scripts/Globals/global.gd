@@ -21,3 +21,4 @@ var num_angry := 0:
 		if value != num_angry:
 			num_angry = value
 			anger_changed.emit()
+			

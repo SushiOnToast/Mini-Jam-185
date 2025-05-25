@@ -1,11 +1,14 @@
 extends NodeState
 
 @export var character: CharacterBody2D
-@export var animated_sprite_2d: AnimatedSprite2D
-@export var idle_state_time_interval: float = 5.0
+var animated_sprite_2d: AnimatedSprite2D
+@export var idle_state_time_interval: float = 2
 
 @onready var idle_state_timer: Timer = Timer.new()
 @onready var walk: NPCWalk = $"../Walk"
+
+@onready var bald: AnimatedSprite2D = $"../../Bald"
+@onready var hair: AnimatedSprite2D = $"../../Hair"
 
 @onready var npc: NPC = $"../.."
 
@@ -28,6 +31,13 @@ func _on_next_transitions() -> void:
 
 
 func _on_enter() -> void:
+	if npc.gender == 1:
+		animated_sprite_2d = hair
+		bald.hide()
+	else:
+		animated_sprite_2d = bald
+		hair.hide()
+	
 	animated_sprite_2d.play("idle_down")
 	idle_state_timeout = false
 	idle_state_timer.start()
