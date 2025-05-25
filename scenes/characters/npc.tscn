@@ -290,7 +290,7 @@ bg_color = Color(0.52549, 0.752941, 0.423529, 1)
 [node name="NPC" type="CharacterBody2D"]
 z_index = 1
 script = ExtResource("1_urmqq")
-angry_time_max = 10.0
+angry_time_max = 15.0
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 debug_enabled = true
