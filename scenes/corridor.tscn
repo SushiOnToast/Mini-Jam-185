@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://c80sux3viw6lm"]
+[gd_scene load_steps=26 format=4 uid="uid://c80sux3viw6lm"]
 
 [ext_resource type="PackedScene" uid="uid://i3sp2jfi6rg1" path="res://scenes/characters/player.tscn" id="1_mj2as"]
 [ext_resource type="Script" uid="uid://p5jnv5ygsaun" path="res://scripts/corridor.gd" id="1_so7gr"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bymyqm18cjnjt" path="res://scenes/tp_zone.tscn" id="11_f323m"]
 [ext_resource type="PackedScene" uid="uid://b303f72fvislv" path="res://scenes/UI/bubble.tscn" id="11_pbkn3"]
 [ext_resource type="Texture2D" uid="uid://6gnu3iq32i1h" path="res://assets/UI/occupied_bubble.png" id="11_ucmnp"]
+[ext_resource type="Texture2D" uid="uid://c1h36clgb6ywf" path="res://assets/UI/wrong_bubble.png" id="13_35wme"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pucmg"]
 texture = ExtResource("1_xswuy")
@@ -575,6 +576,20 @@ offset_top = 234.0
 offset_right = 394.0
 offset_bottom = 255.0
 texture = ExtResource("11_ucmnp")
+
+[node name="WrongToiletMale" parent="StallManager/Bubbles" instance=ExtResource("11_pbkn3")]
+offset_left = 311.0
+offset_top = 234.0
+offset_right = 340.0
+offset_bottom = 255.0
+texture = ExtResource("13_35wme")
+
+[node name="WrongToiletFemale" parent="StallManager/Bubbles" instance=ExtResource("11_pbkn3")]
+offset_left = 365.0
+offset_top = 234.0
+offset_right = 394.0
+offset_bottom = 255.0
+texture = ExtResource("13_35wme")
 
 [node name="UI" parent="." instance=ExtResource("6_n8bhm")]
 
