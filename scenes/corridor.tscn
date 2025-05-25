@@ -166,11 +166,6 @@ tile_set = SubResource("TileSet_mus4g")
 z_index = 1
 position = Vector2(354, 300)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(-2, -12)
-zoom = Vector2(5, 5)
-position_smoothing_enabled = true
-
 [node name="NPCs" type="Node2D" parent="."]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="NPCs"]
@@ -274,6 +269,11 @@ position = Vector2(388, 292)
 
 [node name="DoorExit2" type="Marker2D" parent="NPCExitManager"]
 position = Vector2(311, 291)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(352, 288)
+zoom = Vector2(5, 5)
+position_smoothing_enabled = true
 
 [connection signal="timeout" from="NPCSpawner/SpawnTimer" to="NPCSpawner" method="_on_spawn_timer_timeout"]
 [connection signal="body_entered" from="StallManager/MaleDoor" to="StallManager" method="_on_male_door_body_entered"]
