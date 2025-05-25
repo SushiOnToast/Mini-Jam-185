@@ -46,11 +46,13 @@ func recalculate_time() -> void:
 	
 	if current_day_index + 1 != current_day:
 		current_day = current_day_index + 1
+		Global.spawn_timer_wait_time -= 0.3
+		time = (current_day - 1) * shift_duration  
+		current_minute = -1  
 		time_tick_day.emit(current_day)
 
 	var shift_time_minutes: int = total_elapsed_minutes % shift_duration
 	var total_minutes: int = shift_start_minutes + shift_time_minutes
-
 
 	var hour: int = int(total_minutes / MINUTES_PER_HOUR)
 	var minute: int = total_minutes % MINUTES_PER_HOUR
@@ -58,12 +60,6 @@ func recalculate_time() -> void:
 	if current_minute != minute:
 		current_minute = minute
 		time_tick.emit(current_day, hour, minute)
-
-	# If the current shift has finished
-	if shift_time_minutes >= shift_duration:
-		current_day += 1
-		time = (current_day - 1) * shift_duration  # Move to start of next shift
-		time_tick_day.emit(current_day)
 
 # Pause/resume/reset
 func reset() -> void:

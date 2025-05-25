@@ -21,4 +21,5 @@ var num_angry := 0:
 		if value != num_angry:
 			num_angry = value
 			anger_changed.emit()
-			
+
+var spawn_timer_wait_time: float = 7.0

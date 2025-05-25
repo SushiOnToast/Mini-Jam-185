@@ -400,9 +400,9 @@ size = Vector2(5, 40)
 
 [node name="Corridor" type="Node2D"]
 
-[node name="Test" type="Node" parent="."]
+[node name="Tiles" type="Node" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="Test"]
+[node name="ColorRect" type="ColorRect" parent="Tiles"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -410,41 +410,39 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.027451, 0.0941176, 0.129412, 1)
 
-[node name="TileMapLayer" type="TileMapLayer" parent="Test"]
+[node name="TileMapLayer" type="TileMapLayer" parent="Tiles"]
 position = Vector2(-8, -11)
 tile_map_data = PackedByteArray("AAARAA4AAAAAAAAAAAARABEAAAAAAAMAAAARABIAAAAAAAQAAAARABMAAAAAAAUAAAARABQAAAAAAAYAAAAaAA4AAAAJAAAAAAAaAA8AAAAJAAEAAAAaABAAAAAJAAIAAAAaABEAAAAJAAMAAAAaABIAAAAJAAQAAAAaABMAAAAJAAUAAAAaABQAAAAJAAYAAAATABAAAQAAAAAAAAATABEAAQAAAAEAAAATABIAAQAAAAIAAAATABMAAQAAAAIAAAAUABAAAQABAAAAAAAUABEAAQABAAEAAAAVABAAAQABAAAAAAAVABEAAQABAAEAAAATABQAAQAAAAIAAAATABUAAQAAAAgAAAAUABUAAQABAAgAAAAVABUAAQABAAgAAAAUABIAAgAAAAAAAAAVABIAAgABAAAAAAAUABMAAgABAAAAAAAVABQAAgABAAAAAAAVABMAAgAAAAAAAAAUABQAAgAAAAAAAAAWABAAAQABAAAAAAAWABEAAQABAAEAAAAXABAAAQABAAAAAAAXABEAAQABAAEAAAAYABAAAQABAAAAAAAYABEAAQABAAEAAAAZABAAAQACAAAAAAAZABEAAQACAAEAAAAZABIAAQACAAIAAAAZABMAAQACAAIAAAAZABQAAQACAAcAAAAYABUAAQABAAgAAAAZABUAAQACAAgAAAAWABUAAQABAAgAAAAXABUAAQABAAgAAAAWABIAAgAAAAAAAAAYABIAAgAAAAAAAAAXABMAAgAAAAAAAAAWABQAAgAAAAAAAAAYABQAAgAAAAAAAAAWABMAAgABAAAAAAAXABIAAgABAAAAAAAXABQAAgABAAAAAAAYABMAAgABAAAAAAA=")
 tile_set = SubResource("TileSet_mus4g")
 
-[node name="door" type="TileMapLayer" parent="Test"]
+[node name="door" type="TileMapLayer" parent="Tiles"]
 position = Vector2(-11, -21)
 tile_map_data = PackedByteArray("AAAUABEAAAAAAAAAAAAUABIAAAAAAAEAAAAVABEAAAABAAAAAAAVABIAAAABAAEAAAA=")
 tile_set = SubResource("TileSet_35wme")
 
-[node name="door2" type="TileMapLayer" parent="Test"]
+[node name="door2" type="TileMapLayer" parent="Tiles"]
 position = Vector2(-6, -21)
 tile_map_data = PackedByteArray("AAAXABEAAAACAAAAAAAXABIAAAACAAEAAAAYABEAAAADAAAAAAAYABIAAAADAAEAAAA=")
 tile_set = SubResource("TileSet_35wme")
 
-[node name="shelf" type="TileMapLayer" parent="Test"]
+[node name="shelf" type="TileMapLayer" parent="Tiles"]
 position = Vector2(2, -21)
 tile_map_data = PackedByteArray("AAAVABEAAAAAAAAAAAAVABIAAAAAAAEAAAAWABEAAAABAAAAAAAWABIAAAABAAEAAAA=")
 tile_set = SubResource("TileSet_e36xs")
 
-[node name="desk" type="TileMapLayer" parent="Test"]
+[node name="desk" type="TileMapLayer" parent="Tiles"]
 z_index = 1
 y_sort_enabled = true
 position = Vector2(-7, -21)
 tile_map_data = PackedByteArray("AAAVABMAAAACAAAAAAAWABMAAAADAAAAAAAXABMAAAAEAAAAAAA=")
 tile_set = SubResource("TileSet_e36xs")
 
-[node name="prop" type="TileMapLayer" parent="Test"]
+[node name="prop" type="TileMapLayer" parent="Tiles"]
 z_index = 1
 y_sort_enabled = true
 position = Vector2(2, -14)
 tile_map_data = PackedByteArray("AAAWABIAAAACAAEAAAA=")
 tile_set = SubResource("TileSet_e36xs")
-
-[node name="Tiles" type="Node" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("1_mj2as")]
 position = Vector2(354, 286)

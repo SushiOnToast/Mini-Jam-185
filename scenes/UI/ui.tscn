@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cfhqyahv4iij6"]
+[gd_scene load_steps=18 format=3 uid="uid://cfhqyahv4iij6"]
 
 [ext_resource type="Script" uid="uid://dr24ik1fsywxt" path="res://scripts/UI/day_night_panel.gd" id="1_gdt2y"]
 [ext_resource type="Texture2D" uid="uid://rqy5ofcv0b4l" path="res://assets/UI/heart.png" id="2_yev5y"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://u5veqhbd5e8r" path="res://assets/UI/day_time_ui_lg.png" id="4_wm3ai"]
 [ext_resource type="Script" uid="uid://k5sp4ptcfqcp" path="res://scripts/UI/hearts.gd" id="5_8dubc"]
 [ext_resource type="Script" uid="uid://cd2kje0beov3s" path="res://scripts/UI/heart.gd" id="7_35jxk"]
+[ext_resource type="FontFile" uid="uid://dsg6slgd5vx1x" path="res://assets/fonts/born2bsporty-fs/Born2bSportyFS.otf" id="8_tpnoy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wm3ai"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -37,6 +38,66 @@ tracks/0/keys = {
 _data = {
 &"RESET": SubResource("Animation_tpnoy"),
 &"lose": SubResource("Animation_35jxk")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_35jxk"]
+bg_color = Color(0.027451, 0.0941176, 0.129412, 1)
+
+[sub_resource type="Animation" id="Animation_vb61p"]
+resource_name = "show"
+length = 1.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.966667, -1.5, -2, 0, -0.5, 0.25, 0),
+"times": PackedFloat32Array(0, 1.46667)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(800, -0.25, 0, 0.25, 0, -2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.46667)
+}
+
+[sub_resource type="Animation" id="Animation_owlbh"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(800, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c5elv"]
+_data = {
+&"RESET": SubResource("Animation_owlbh"),
+&"show": SubResource("Animation_vb61p")
 }
 
 [node name="UI" type="CanvasLayer"]
@@ -169,3 +230,39 @@ metadata/_custom_type_script = "uid://cd2kje0beov3s"
 libraries = {
 &"": SubResource("AnimationLibrary_vb61p")
 }
+
+[node name="DayTransition" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 800.0
+offset_bottom = 800.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_35jxk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DayTransition"]
+libraries = {
+&"": SubResource("AnimationLibrary_c5elv")
+}
+
+[node name="Label" type="Label" parent="DayTransition"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -71.5
+offset_top = -64.0
+offset_right = 83.5
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.52549, 0.752941, 0.423529, 1)
+theme_override_fonts/font = ExtResource("8_tpnoy")
+theme_override_font_sizes/font_size = 80
+text = "Day 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

@@ -6,6 +6,11 @@ extends Node2D
 @onready var exit_point1: Marker2D = $"../NPCExitManager/ExitPoint1"
 @onready var exit_point2: Marker2D = $"../NPCExitManager/ExitPoint2"
 
+@onready var spawn_timer: Timer = $SpawnTimer
+
+func _process(delta: float) -> void:
+	spawn_timer.wait_time = Global.spawn_timer_wait_time
+
 func _on_spawn_timer_timeout() -> void:
 	if npc_list.get_children().size() - 1 == queue_manager.get_children().size():
 		return
