@@ -1,8 +1,8 @@
 extends Node2D
 
 @onready var npcs: Node2D = $NPCs
-@onready var male_occupied_slot: Node2D = $StallManager/MaleOccupiedSlot
-@onready var female_occupied_slot: Node2D = $StallManager/FemaleOccupiedSlot
+@onready var male_occupied_slot: Node2D = $StallManager/Slots/MaleOccupiedSlot
+@onready var female_occupied_slot: Node2D = $StallManager/Slots/FemaleOccupiedSlot
 
 func _process(delta: float) -> void:
 	if Global.clear_npcs:

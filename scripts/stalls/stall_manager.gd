@@ -1,10 +1,13 @@
 extends Node2D
 
-@onready var male_stall_timer: Timer = $MaleStallTimer
-@onready var female_stall_timer: Timer = $FemaleStallTimer
+@onready var male_stall_timer: Timer = $Timers/MaleStallTimer
+@onready var female_stall_timer: Timer = $Timers/FemaleStallTimer
 
 @onready var door_exit_1: Marker2D = $"../NPCExitManager/DoorExit1"
 @onready var door_exit_2: Marker2D = $"../NPCExitManager/DoorExit2"
+
+@onready var male_occupied_bubble: Bubble = $Bubbles/MaleOccupiedBubble
+@onready var female_occupied_bubble: Bubble = $Bubbles/FemaleOccupiedBubble
 
 var set_male_timer = false
 var set_female_timer = false
@@ -51,7 +54,7 @@ func _on_male_door_body_entered(body: NPC) -> void:
 			male_user = body  # store reference
 			body.entered_toilet = true
 	else:
-		print("Occupied!")
+		male_occupied_bubble.show_bubble()
 
 func _on_female_door_body_entered(body: NPC) -> void:
 	if body.used_toilet:
@@ -65,4 +68,4 @@ func _on_female_door_body_entered(body: NPC) -> void:
 			female_user = body  # store reference
 			body.entered_toilet = true
 	else:
-		print("Occupied!")
+		female_occupied_bubble.show_bubble()

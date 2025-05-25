@@ -2,10 +2,9 @@ extends Node2D
 class_name QueueManager
 
 @onready var npc_list: Node2D = $"../NPCs"
-@onready var male_door: Area2D = $"../StallManager/MaleDoor"
 
-@onready var male_occupied: Node2D = $"../StallManager/MaleOccupiedSlot"
-@onready var female_occupied: Node2D = $"../StallManager/FemaleOccupiedSlot"
+@onready var male_occupied: Node2D = $"../StallManager/Slots/MaleOccupiedSlot"
+@onready var female_occupied: Node2D = $"../StallManager/Slots/FemaleOccupiedSlot"
 
 func _process(_delta: float) -> void:
 	var all_children = npc_list.get_children()
@@ -25,7 +24,6 @@ func _process(_delta: float) -> void:
 func set_queue_positions(npcs, queue_positions):
 	for i in range(min(npcs.size(), queue_positions.size())):
 		npcs[i].target_position = queue_positions[i].position
-		npcs[i].door_pos = male_door.position
 		npcs[i].queue_pos = i
 		
 func move_to_occupied_slot(npc: NPC) -> void:
