@@ -1,6 +1,7 @@
-[gd_scene load_steps=22 format=4 uid="uid://c80sux3viw6lm"]
+[gd_scene load_steps=23 format=4 uid="uid://c80sux3viw6lm"]
 
 [ext_resource type="PackedScene" uid="uid://i3sp2jfi6rg1" path="res://scenes/characters/player.tscn" id="1_mj2as"]
+[ext_resource type="Script" uid="uid://p5jnv5ygsaun" path="res://scripts/corridor.gd" id="1_so7gr"]
 [ext_resource type="Texture2D" uid="uid://dfmcxmyq3y8gy" path="res://assets/graphics/Room.png" id="1_xswuy"]
 [ext_resource type="Texture2D" uid="uid://j0wtgwj5yu7h" path="res://assets/graphics/Tilemap.png" id="2_pblcb"]
 [ext_resource type="Script" uid="uid://cym0el1xi0abu" path="res://scripts/characters/NPC/npc_spawner.gd" id="3_pucmg"]
@@ -400,6 +401,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(303, 269, 429, 269, 432
 size = Vector2(5, 40)
 
 [node name="Corridor" type="Node2D"]
+script = ExtResource("1_so7gr")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(352, 288)

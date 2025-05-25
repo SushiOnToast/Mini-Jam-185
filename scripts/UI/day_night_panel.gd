@@ -26,8 +26,8 @@ func on_new_day(day: int) -> void:
 	day_label.text = "Day " + str(day)
 	day_transition_label.text = "Day " + str(day)
 	DayAndNightCycleManager.pause()
-	Global.clear_npcs = true
 	animation_player.play("show")
+	Global.clear_npcs = true
 	await animation_player.animation_finished
 	animation_player.play_backwards("show")
 	DayAndNightCycleManager.resume()
