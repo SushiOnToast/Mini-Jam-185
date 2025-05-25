@@ -14,6 +14,9 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [sub_resource type="Theme" id="Theme_8dubc"]
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_wm3ai")
 
+[sub_resource type="Animation" id="Animation_tpnoy"]
+length = 0.001
+
 [sub_resource type="Animation" id="Animation_35jxk"]
 resource_name = "lose"
 length = 0.5
@@ -29,9 +32,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
-
-[sub_resource type="Animation" id="Animation_tpnoy"]
-length = 0.001
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vb61p"]
 _data = {

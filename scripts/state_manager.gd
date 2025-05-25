@@ -3,6 +3,7 @@ extends Node
 class_name StateManager 
 
 @onready var animation_player: AnimationPlayer = $Transition/AnimationPlayer
+@onready var main: Main = $".."
 
 var prev_scene: Node = null
 var prev_scene_path: String = ""
@@ -53,11 +54,11 @@ func switch_to(scene_path: String, scene_key: String) -> void:
 	transitioning = false
 	
 func initialize() -> void:
+	reset_state()
 	switch_to("res://scenes/corridor.tscn", "Corridor")
 	
 func show_menu() -> void:
-	#switch_to(START_MENU_PATH, "StartMenu")
-	pass
+	switch_to("res://scenes/UI/start_screen.tscn", "StartScreen")
 
 func show_pause() -> void:
 	#if transitioning or current_scene.name == "StartMenu":
@@ -83,3 +84,7 @@ func reset_state():
 	prev_scene = null
 	prev_scene_path = ""
 	transitioning = false
+	
+	DayAndNightCycleManager.reset()
+	Global.num_angry = 0
+	main.shown_game_over = false
