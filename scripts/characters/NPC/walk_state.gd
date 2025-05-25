@@ -55,6 +55,9 @@ func _on_physics_process(_delta : float) -> void:
 		character.velocity = target_direction * speed
 		character.move_and_slide()
 		
+	#if character.global_position.distance_to(target_position) < 20 and npc.is_exiting:
+		#queue_free()
+		
 	# animation
 	var dir = target_direction.normalized()
 
@@ -81,7 +84,7 @@ func _on_next_transitions() -> void:
 		transition.emit("Idle")
 	if navigation_agent_2d.is_navigation_finished():
 		if npc.is_exiting:
-			queue_free()
+			npc.queue_free()
 			return
 		else:
 			character.velocity = Vector2.ZERO

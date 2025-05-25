@@ -400,6 +400,11 @@ size = Vector2(5, 40)
 
 [node name="Corridor" type="Node2D"]
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(352, 288)
+zoom = Vector2(5, 5)
+position_smoothing_enabled = true
+
 [node name="Tiles" type="Node" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="Tiles"]
@@ -444,10 +449,18 @@ position = Vector2(2, -14)
 tile_map_data = PackedByteArray("AAAWABIAAAACAAEAAAA=")
 tile_set = SubResource("TileSet_e36xs")
 
+[node name="Overlay" type="TileMapLayer" parent="Tiles"]
+z_index = 3
+position = Vector2(-8, -11)
+tile_map_data = PackedByteArray("AAARAA4AAAAAAAAAAAARABEAAAAAAAMAAAARABIAAAAAAAQAAAARABMAAAAAAAUAAAARABQAAAAAAAYAAAAaAA4AAAAJAAAAAAAaAA8AAAAJAAEAAAAaABAAAAAJAAIAAAAaABEAAAAJAAMAAAAaABIAAAAJAAQAAAAaABMAAAAJAAUAAAAaABQAAAAJAAYAAAAUABUAAQABAAgAAAAVABUAAQABAAgAAAAYABUAAQABAAgAAAAZABUAAQACAAgAAAAWABUAAQABAAgAAAAXABUAAQABAAgAAAA=")
+tile_set = SubResource("TileSet_mus4g")
+
 [node name="Player" parent="." instance=ExtResource("1_mj2as")]
 position = Vector2(354, 286)
 
 [node name="NPCs" type="Node2D" parent="."]
+z_index = 1
+y_sort_enabled = true
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="NPCs"]
 position = Vector2(-15, -7)
@@ -462,6 +475,7 @@ wait_time = 5.0
 autostart = true
 
 [node name="QueueManager" type="Node2D" parent="."]
+position = Vector2(0, -4)
 script = ExtResource("4_mus4g")
 
 [node name="QueueSpace1" type="Marker2D" parent="QueueManager"]
@@ -504,15 +518,6 @@ scale = Vector2(4.07674, 0.480185)
 collision_layer = 2
 collision_mask = 2
 
-[node name="MaleDoor" type="ColorRect" parent="StallManager/MaleDoor"]
-visible = false
-z_index = 1
-offset_left = -3.0
-offset_top = -20.0
-offset_right = 2.0
-offset_bottom = 20.0
-color = Color(0.52549, 0.752941, 0.423529, 1)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StallManager/MaleDoor"]
 z_index = 1
 position = Vector2(-0.5, 0)
@@ -524,16 +529,6 @@ position = Vector2(381, 279)
 scale = Vector2(3.84, 0.52)
 collision_layer = 2
 collision_mask = 2
-
-[node name="FemaleDoor" type="ColorRect" parent="StallManager/FemaleDoor"]
-visible = false
-z_index = 1
-offset_left = -3.0
-offset_top = -20.0
-offset_right = 2.0
-offset_bottom = 20.0
-color = Color(0.52549, 0.752941, 0.423529, 1)
-metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StallManager/FemaleDoor"]
 z_index = 1
@@ -557,10 +552,10 @@ z_index = 1
 [node name="NPCExitManager" type="Node2D" parent="."]
 
 [node name="ExitPoint1" type="Marker2D" parent="NPCExitManager"]
-position = Vector2(327, 385)
+position = Vector2(329, 387)
 
 [node name="ExitPoint2" type="Marker2D" parent="NPCExitManager"]
-position = Vector2(380, 386)
+position = Vector2(374, 387)
 
 [node name="DoorExit1" type="Marker2D" parent="NPCExitManager"]
 position = Vector2(381, 291)
@@ -568,10 +563,13 @@ position = Vector2(381, 291)
 [node name="DoorExit2" type="Marker2D" parent="NPCExitManager"]
 position = Vector2(322, 290)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(352, 288)
-zoom = Vector2(5, 5)
-position_smoothing_enabled = true
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = 2
+offset_left = 272.0
+offset_top = 330.0
+offset_right = 432.0
+offset_bottom = 370.0
+color = Color(0.027451, 0.0941176, 0.129412, 1)
 
 [connection signal="timeout" from="NPCSpawner/SpawnTimer" to="NPCSpawner" method="_on_spawn_timer_timeout"]
 [connection signal="body_entered" from="StallManager/MaleDoor" to="StallManager" method="_on_male_door_body_entered"]
