@@ -13,6 +13,8 @@ var time: float = 0.0  # In-game minutes
 var current_minute: int = -1
 var current_day: int = 0
 
+var paused: bool = false  # <-- Pause state
+
 signal game_time(time: float)
 signal time_tick(day: int, hour: int, minute: int)
 signal time_tick_day(day: int)
@@ -21,7 +23,10 @@ func _ready() -> void:
 	set_initial_time()
 
 func _process(delta: float) -> void:
-	time += delta * game_speed  # Add real-time * speed to in-game minutes
+	if paused:
+		return
+
+	time += delta * game_speed
 	game_time.emit(time)
 	recalculate_time()
 
@@ -46,9 +51,19 @@ func recalculate_time() -> void:
 		current_day = day
 		time_tick_day.emit(day)
 
-# === RESET FUNCTION ===
+# === Reset Time ===
 func reset() -> void:
 	time = 0.0
 	current_minute = -1
 	current_day = 0
 	set_initial_time()
+
+# === Pause Controls ===
+func pause() -> void:
+	paused = true
+
+func resume() -> void:
+	paused = false
+
+func is_paused() -> bool:
+	return paused

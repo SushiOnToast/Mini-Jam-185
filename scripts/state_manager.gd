@@ -61,13 +61,14 @@ func show_menu() -> void:
 	switch_to("res://scenes/UI/start_screen.tscn", "StartScreen")
 
 func show_pause() -> void:
-	#if transitioning or current_scene.name == "StartMenu":
-		#return
-	#
-	#switch_to(PAUSE_MENU_PATH, "PauseMenu")
-	pass
+	if transitioning or current_scene.name == "StartScreen" or current_scene.name == "GameOverScreen":
+		return
+	
+	DayAndNightCycleManager.pause()
+	switch_to("res://scenes/UI/pause_screen.tscn", "PauseScreen")
 	
 func resume() -> void:
+	DayAndNightCycleManager.resume()
 	switch_to(prev_scene_path, prev_scene.name)
 	
 func reset_state():
