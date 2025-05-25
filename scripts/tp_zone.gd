@@ -20,7 +20,7 @@ func _process(delta):
 			if player_in_zone and Input.is_action_just_pressed("interact"):
 				state_manager.switch_to(target_scene_path, target_name)
 		else:
-			texture_rect.hi
+			texture_rect.hide()
 	elif self.name.to_lower() == "female":
 		if not Global.stall_status["female"]:
 			texture_rect.visible = player_in_zone
