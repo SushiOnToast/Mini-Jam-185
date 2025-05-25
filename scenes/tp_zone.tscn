@@ -5,7 +5,7 @@
 [ext_resource type="FontFile" uid="uid://dsg6slgd5vx1x" path="res://assets/fonts/born2bsporty-fs/Born2bSportyFS.otf" id="2_rki24"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ceu0u"]
-size = Vector2(64, 74)
+size = Vector2(42, 56)
 
 [node name="TpZone" type="Area2D"]
 script = ExtResource("1_rki24")
@@ -27,5 +27,5 @@ theme_override_fonts/font = ExtResource("2_rki24")
 text = "E"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-4, 0)
+position = Vector2(-15, -9)
 shape = SubResource("RectangleShape2D_ceu0u")
