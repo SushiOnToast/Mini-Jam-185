@@ -274,7 +274,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_76oj4"]
-radius = 5.0
+radius = 7.0
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
@@ -288,7 +288,7 @@ autoplay = "idle_down"
 frame_progress = 0.44009
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -5)
+position = Vector2(0, -8)
 shape = SubResource("CircleShape2D_76oj4")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_node_state")]
