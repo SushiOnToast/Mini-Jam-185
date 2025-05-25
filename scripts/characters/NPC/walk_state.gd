@@ -2,10 +2,13 @@ extends NodeState
 class_name NPCWalk
 
 @export var character: CharacterBody2D
-@export var animated_sprite_2d: AnimatedSprite2D
+var animated_sprite_2d: AnimatedSprite2D
 @export var navigation_agent_2d: NavigationAgent2D
 @export var min_speed: float = 5.0
 @export var max_speed: float = 10
+
+@onready var bald: AnimatedSprite2D = $"../../Bald"
+@onready var hair: AnimatedSprite2D = $"../../Hair"
 
 @onready var npc: NPC = $"../.."
 
@@ -86,6 +89,12 @@ func _on_next_transitions() -> void:
 
 
 func _on_enter() -> void:
+	if npc.gender == 1:
+		animated_sprite_2d = hair
+		bald.hide()
+	else:
+		animated_sprite_2d = bald
+		hair.hide()
 	animated_sprite_2d.play("walk_down")
 
 
