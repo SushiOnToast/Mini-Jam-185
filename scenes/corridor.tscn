@@ -247,11 +247,16 @@ z_index = 1
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_7w20u")
 
-[node name="StallTimer" type="Timer" parent="StallManager"]
+[node name="MaleStallTimer" type="Timer" parent="StallManager"]
+wait_time = 7.0
+
+[node name="FemaleStallTimer" type="Timer" parent="StallManager"]
 wait_time = 7.0
 
 [node name="UI" parent="." instance=ExtResource("6_n8bhm")]
 
 [connection signal="timeout" from="NPCSpawner/SpawnTimer" to="NPCSpawner" method="_on_spawn_timer_timeout"]
 [connection signal="body_entered" from="StallManager/MaleDoor" to="StallManager" method="_on_male_door_body_entered"]
-[connection signal="timeout" from="StallManager/StallTimer" to="StallManager" method="_on_stall_timer_timeout"]
+[connection signal="body_entered" from="StallManager/FemaleDoor" to="StallManager" method="_on_female_door_body_entered"]
+[connection signal="timeout" from="StallManager/MaleStallTimer" to="StallManager" method="_on_male_stall_timer_timeout"]
+[connection signal="timeout" from="StallManager/FemaleStallTimer" to="StallManager" method="_on_female_stall_timer_timeout"]

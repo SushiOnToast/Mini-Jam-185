@@ -12,5 +12,7 @@ func _on_spawn_timer_timeout() -> void:
 	
 	var offset = Vector2(randf_range(-8, 8), randf_range(-8, 8))
 	new_npc.position = position + offset
+	new_npc.gender = randi_range(0, 1)
+	print(new_npc.gender)
 	
 	get_parent().get_node("NPCs").add_child(new_npc)

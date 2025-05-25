@@ -13,6 +13,8 @@ class_name NPC
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 @onready var progress_bar: ProgressBar = $ProgressBar
 
+var gender: int
+
 # === DRAGGING STATE ===
 var dragging := false
 var offset := Vector2.ZERO
