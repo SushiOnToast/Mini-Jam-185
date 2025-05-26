@@ -622,14 +622,6 @@ position = Vector2(381, 291)
 [node name="DoorExit2" type="Marker2D" parent="NPCExitManager"]
 position = Vector2(322, 290)
 
-[node name="ColorRect" type="ColorRect" parent="."]
-z_index = 2
-offset_left = 272.0
-offset_top = 330.0
-offset_right = 432.0
-offset_bottom = 370.0
-color = Color(0.027451, 0.0941176, 0.129412, 1)
-
 [node name="ToiletPaper" parent="." instance=ExtResource("8_i3k5h")]
 z_index = 1
 position = Vector2(375, 308)
@@ -645,6 +637,14 @@ stream = ExtResource("14_e36xs")
 
 [node name="WrongStallFemaleSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("15_i3k5h")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = 5
+offset_left = 272.0
+offset_top = 330.0
+offset_right = 432.0
+offset_bottom = 370.0
+color = Color(0.027451, 0.0941176, 0.129412, 1)
 
 [connection signal="timeout" from="NPCSpawner/SpawnTimer" to="NPCSpawner" method="_on_spawn_timer_timeout"]
 [connection signal="body_entered" from="StallManager/Doors/MaleDoor" to="StallManager" method="_on_male_door_body_entered"]
