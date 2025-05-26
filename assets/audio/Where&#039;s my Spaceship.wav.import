@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ceydajs7ywm1b"
+path="res://.godot/imported/Where&#039;s my Spaceship.wav-4a27001ca93f3ff00cf28d47423c93d9.sample"
+
+[deps]
+
+source_file="res://assets/audio/Where&#039;s my Spaceship.wav"
+dest_files=["res://.godot/imported/Where&#039;s my Spaceship.wav-4a27001ca93f3ff00cf28d47423c93d9.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

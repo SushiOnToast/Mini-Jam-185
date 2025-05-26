@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://ggxh5qv0ujre"]
+[gd_scene load_steps=79 format=3 uid="uid://ggxh5qv0ujre"]
 
 [ext_resource type="Script" uid="uid://bp5ybl3ykgde6" path="res://scripts/characters/NPC/npc.gd" id="1_urmqq"]
 [ext_resource type="Texture2D" uid="uid://dy3dsv4kfjgbb" path="res://assets/graphics/characters/npcs/npc2.png" id="2_m3kmy"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b1vx43dfrk75w" path="res://assets/graphics/characters/npcs/npc1walk.png" id="3_m3kmy"]
 [ext_resource type="Script" uid="uid://suis6escc673" path="res://scripts/characters/NPC/idle_state.gd" id="4_urpkq"]
 [ext_resource type="Script" uid="uid://cpfgylvbfxxap" path="res://scripts/characters/NPC/walk_state.gd" id="5_urpkq"]
+[ext_resource type="AudioStream" uid="uid://7lnh0y2drjsm" path="res://assets/audio/behind-doors-toilet-flush-196151.mp3" id="9_thqvo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m3kmy"]
 atlas = ExtResource("2_m3kmy")
@@ -611,3 +612,6 @@ theme_override_styles/background = SubResource("StyleBoxFlat_urmqq")
 theme_override_styles/fill = SubResource("StyleBoxFlat_m3kmy")
 value = 100.0
 show_percentage = false
+
+[node name="FlushingSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_thqvo")

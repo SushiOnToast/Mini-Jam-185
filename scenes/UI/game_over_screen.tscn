@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cl6vghpe0t2hk"]
+[gd_scene load_steps=8 format=3 uid="uid://cl6vghpe0t2hk"]
 
 [ext_resource type="Script" uid="uid://dfa1pjso3hydd" path="res://scripts/UI/game_over_screen.gd" id="1_hff0f"]
 [ext_resource type="FontFile" uid="uid://dsg6slgd5vx1x" path="res://assets/fonts/born2bsporty-fs/Born2bSportyFS.otf" id="2_tukgr"]
 [ext_resource type="FontFile" uid="uid://co8bkqfrvq2u2" path="res://assets/fonts/pixelify_sans/static/PixelifySans-Regular.ttf" id="3_aaiud"]
+[ext_resource type="AudioStream" uid="uid://d0lcor6syjkau" path="res://assets/audio/game_over.wav" id="4_tukgr"]
 
 [sub_resource type="Animation" id="Animation_wa2qn"]
 length = 0.001
@@ -112,3 +113,7 @@ horizontal_alignment = 1
 libraries = {
 &"": SubResource("AnimationLibrary_cyfkl")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_tukgr")
+autoplay = true
