@@ -86,6 +86,7 @@ func _on_female_door_body_entered(body: NPC) -> void:
 		return
 	if Global.needs_toilet_paper["female"]:
 		needs_toilet_paper_female.show_bubble()
+		return
 	if not Global.stall_status["female"]:
 		if not body.gender:
 			wrong_toilet_female.show_bubble()

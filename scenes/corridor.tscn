@@ -554,6 +554,10 @@ wait_time = 7.0
 [node name="FemaleStallTimer" type="Timer" parent="StallManager/Timers"]
 wait_time = 7.0
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="StallManager"]
+stream = ExtResource("15_35wme")
+autoplay = true
+
 [node name="Slots" type="Node" parent="StallManager"]
 
 [node name="MaleOccupiedSlot" type="Node2D" parent="StallManager/Slots"]
@@ -625,10 +629,6 @@ position = Vector2(322, 290)
 [node name="ToiletPaper" parent="." instance=ExtResource("8_i3k5h")]
 z_index = 1
 position = Vector2(375, 308)
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("15_35wme")
-autoplay = true
 
 [node name="Sounds" type="Node" parent="."]
 
