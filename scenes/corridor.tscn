@@ -1,7 +1,7 @@
-[gd_scene load_steps=25 format=4 uid="uid://c80sux3viw6lm"]
+[gd_scene load_steps=26 format=4 uid="uid://c80sux3viw6lm"]
 
 [ext_resource type="PackedScene" uid="uid://i3sp2jfi6rg1" path="res://scenes/characters/player.tscn" id="1_mj2as"]
-[ext_resource type="Script" path="res://scripts/corridor.gd" id="1_so7gr"]
+[ext_resource type="Script" uid="uid://p5jnv5ygsaun" path="res://scripts/corridor.gd" id="1_so7gr"]
 [ext_resource type="Texture2D" uid="uid://dfmcxmyq3y8gy" path="res://assets/graphics/Room.png" id="1_xswuy"]
 [ext_resource type="Texture2D" uid="uid://j0wtgwj5yu7h" path="res://assets/graphics/Tilemap.png" id="2_pblcb"]
 [ext_resource type="Script" uid="uid://cym0el1xi0abu" path="res://scripts/characters/NPC/npc_spawner.gd" id="3_pucmg"]
@@ -10,10 +10,11 @@
 [ext_resource type="Script" uid="uid://bllmx1wqd1ox2" path="res://scripts/characters/NPC/queue_manager.gd" id="4_mus4g"]
 [ext_resource type="Script" uid="uid://di04gqgp30gjb" path="res://scripts/stalls/stall_manager.gd" id="5_7w20u"]
 [ext_resource type="Texture2D" uid="uid://cpb6ehqn3ns8q" path="res://assets/graphics/shelf.png" id="5_so7gr"]
-[ext_resource type="PackedScene" uid="uid://bymyqm18cjnjt" path="res://scenes/tp_zone.tscn" id="11_f323m"]
+[ext_resource type="PackedScene" uid="uid://b1xsouty2fp5c" path="res://scenes/toilet_paper.tscn" id="8_i3k5h"]
 [ext_resource type="PackedScene" uid="uid://cy8stq0g2wecb" path="res://scenes/UI/bubble.tscn" id="11_pbkn3"]
 [ext_resource type="Texture2D" uid="uid://6gnu3iq32i1h" path="res://assets/UI/occupied_bubble.png" id="11_ucmnp"]
 [ext_resource type="Texture2D" uid="uid://c1h36clgb6ywf" path="res://assets/UI/wrong_bubble.png" id="13_35wme"]
+[ext_resource type="Texture2D" uid="uid://veax3m5uqhqi" path="res://assets/UI/toilet_paper_bubble.png" id="14_pbkn3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pucmg"]
 texture = ExtResource("1_xswuy")
@@ -437,7 +438,7 @@ tile_set = SubResource("TileSet_35wme")
 
 [node name="shelf" type="TileMapLayer" parent="Tiles"]
 position = Vector2(2, -21)
-tile_map_data = PackedByteArray("AAAVABEAAAAAAAAAAAAVABIAAAAAAAEAAAAWABEAAAABAAAAAAAWABIAAAABAAEAAAA=")
+tile_map_data = PackedByteArray("AAAVABIAAAAAAAEAAAAWABEAAAABAAAAAAAWABIAAAABAAEAAAAVABEAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_e36xs")
 
 [node name="desk" type="TileMapLayer" parent="Tiles"]
@@ -590,6 +591,20 @@ offset_right = 394.0
 offset_bottom = 255.0
 texture = ExtResource("13_35wme")
 
+[node name="NeedsToiletPaperFemale" parent="StallManager/Bubbles" instance=ExtResource("11_pbkn3")]
+offset_left = 365.0
+offset_top = 234.0
+offset_right = 394.0
+offset_bottom = 255.0
+texture = ExtResource("14_pbkn3")
+
+[node name="NeedsToiletPaperMale" parent="StallManager/Bubbles" instance=ExtResource("11_pbkn3")]
+offset_left = 311.0
+offset_top = 234.0
+offset_right = 340.0
+offset_bottom = 255.0
+texture = ExtResource("14_pbkn3")
+
 [node name="NPCExitManager" type="Node2D" parent="."]
 
 [node name="ExitPoint1" type="Marker2D" parent="NPCExitManager"]
@@ -612,21 +627,9 @@ offset_right = 432.0
 offset_bottom = 370.0
 color = Color(0.027451, 0.0941176, 0.129412, 1)
 
-[node name="TPZones" type="Node" parent="."]
-
-[node name="Male" parent="TPZones" instance=ExtResource("11_f323m")]
+[node name="ToiletPaper" parent="." instance=ExtResource("8_i3k5h")]
 z_index = 1
-position = Vector2(329, 277)
-scale = Vector2(0.36002, 0.36002)
-target_scene_path = "res://scenes/bathroom1.tscn"
-target_name = "Bathroom1"
-
-[node name="Female" parent="TPZones" instance=ExtResource("11_f323m")]
-z_index = 1
-position = Vector2(384, 277)
-scale = Vector2(0.36002, 0.36002)
-target_scene_path = "res://scenes/bathroom2.tscn"
-target_name = "Bathroom2"
+position = Vector2(375, 308)
 
 [connection signal="timeout" from="NPCSpawner/SpawnTimer" to="NPCSpawner" method="_on_spawn_timer_timeout"]
 [connection signal="body_entered" from="StallManager/Doors/MaleDoor" to="StallManager" method="_on_male_door_body_entered"]

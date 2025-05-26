@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cy8stq0g2wecb"]
 
-[ext_resource type="Script" path="res://scripts/UI/bubble.gd" id="1_tvtt7"]
+[ext_resource type="Script" uid="uid://5tdxxrowvgj8" path="res://scripts/UI/bubble.gd" id="1_tvtt7"]
 
 [sub_resource type="Animation" id="Animation_f7iem"]
 length = 0.001

@@ -12,6 +12,25 @@ var stall_status: Dictionary = {
 	"female": false
 }
 
+var needs_toilet_paper: Dictionary = {
+	"male": false,
+	"female": false,
+}
+
+# Add per-stall usage tracking
+var toilet_paper_uses_per_stall := {
+	"male": 0,
+	"female": 0,
+}
+
+# Max uses before needing a restock
+const MAX_USES_BEFORE_RESTOCK = 3
+
+func restock_toilet_paper(stall: String) -> void:
+	toilet_paper_uses_per_stall[stall] = 0
+	needs_toilet_paper[stall] = false
+
+
 # game state
 var toilet_paper_uses := 0
 var toilet_paper_depleted := false

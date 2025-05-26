@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://b1xsouty2fp5c"]
+
+[ext_resource type="Script" uid="uid://dd4byw1vrmiop" path="res://scripts/toilet_paper.gd" id="1_2nbod"]
+[ext_resource type="Texture2D" uid="uid://cjptps0q8fkjs" path="res://assets/graphics/toiletpaper.png" id="2_a7evt"]
+[ext_resource type="Texture2D" uid="uid://dmofq2qb6wuar" path="res://assets/UI/button.png" id="3_m42wf"]
+[ext_resource type="FontFile" uid="uid://dsg6slgd5vx1x" path="res://assets/fonts/born2bsporty-fs/Born2bSportyFS.otf" id="4_74sr6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2nbod"]
+size = Vector2(16, 16)
+
+[node name="ToiletPaper" type="Area2D"]
+script = ExtResource("1_2nbod")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_2nbod")
+
+[node name="Toilet" type="TextureRect" parent="."]
+offset_right = 16.0
+offset_bottom = 16.0
+texture = ExtResource("2_a7evt")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -14.0
+offset_top = -15.0
+offset_right = 2.0
+offset_bottom = 1.0
+texture = ExtResource("3_m42wf")
+
+[node name="Label" type="Label" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 14.372
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+theme_override_colors/font_color = Color(0.027451, 0.0941176, 0.129412, 1)
+theme_override_fonts/font = ExtResource("4_74sr6")
+theme_override_font_sizes/font_size = 16
+text = "E"
+
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
