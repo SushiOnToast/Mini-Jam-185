@@ -46,7 +46,7 @@ func recalculate_time() -> void:
 	
 	if current_day_index + 1 != current_day:
 		current_day = current_day_index + 1
-		Global.spawn_timer_wait_time = max(Global.min_spawn_time, Global.spawn_timer_wait_time - 0.3)
+		Global.spawn_timer_wait_time = max(Global.min_spawn_time, Global.spawn_timer_wait_time - 0.5)
 		time = (current_day - 1) * shift_duration  
 		current_minute = -1  
 		time_tick_day.emit(current_day)

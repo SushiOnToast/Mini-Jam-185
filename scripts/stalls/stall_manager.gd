@@ -43,7 +43,7 @@ func _on_male_stall_timer_timeout() -> void:
 		male_user = null
 		
 		Global.toilet_paper_uses_per_stall["male"] += 1
-		if Global.toilet_paper_uses_per_stall["male"] >= Global.MAX_USES_BEFORE_RESTOCK:
+		if Global.toilet_paper_uses_per_stall["male"] >= Global.max_uses_before_restock_per_stall["male"]:
 			Global.needs_toilet_paper["male"] = true
 
 
@@ -55,10 +55,11 @@ func _on_female_stall_timer_timeout() -> void:
 		female_user.show()
 		female_user.used_toilet = true
 		female_user = null
-		
+
 		Global.toilet_paper_uses_per_stall["female"] += 1
-		if Global.toilet_paper_uses_per_stall["female"] >= Global.MAX_USES_BEFORE_RESTOCK:
+		if Global.toilet_paper_uses_per_stall["female"] >= Global.max_uses_before_restock_per_stall["female"]:
 			Global.needs_toilet_paper["female"] = true
+
 
 	
 func _on_male_door_body_entered(body: NPC) -> void:
@@ -70,12 +71,17 @@ func _on_male_door_body_entered(body: NPC) -> void:
 	if not Global.stall_status["male"]:
 		if body.gender:
 			wrong_toilet_male.show_bubble()
-			#wrong_stall_male_sound.play()
 		else:
 			body.hide()
 			Global.stall_status["male"] = true
 			male_user = body
 			body.entered_toilet = true
+			set_male_timer = true
+
+			var use_time = randf_range(Global.USAGE_TIME_RANGE["male"].x, Global.USAGE_TIME_RANGE["male"].y)
+			male_stall_timer.start(use_time)
+
+			Global.max_uses_before_restock_per_stall["male"] = randi_range(Global.MAX_USES_RANGE["male"].x, Global.MAX_USES_RANGE["male"].y)
 	else:
 		male_occupied_bubble.show_bubble()
 	
@@ -90,13 +96,19 @@ func _on_female_door_body_entered(body: NPC) -> void:
 	if not Global.stall_status["female"]:
 		if not body.gender:
 			wrong_toilet_female.show_bubble()
-			#wrong_stall_female_sound.play()
 		else:
 			body.hide()
 			Global.stall_status["female"] = true
 			female_user = body
 			body.entered_toilet = true
+			set_female_timer = true
+
+			var use_time = randf_range(Global.USAGE_TIME_RANGE["female"].x, Global.USAGE_TIME_RANGE["female"].y)
+			female_stall_timer.start(use_time)
+
+			Global.max_uses_before_restock_per_stall["female"] = randi_range(Global.MAX_USES_RANGE["female"].x, Global.MAX_USES_RANGE["female"].y)
 	else:
 		female_occupied_bubble.show_bubble()
+
 	
 	
