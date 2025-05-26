@@ -230,6 +230,7 @@ texture = ExtResource("3_r1xgg")
 sources/0 = SubResource("TileSetAtlasSource_bwl75")
 
 [node name="Bathroom1" type="Node2D"]
+z_index = 4
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -155.0

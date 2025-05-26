@@ -53,9 +53,32 @@ func switch_to(scene_path: String, scene_key: String) -> void:
 
 	transitioning = false
 	
+# From your main scene or current active scene
+
+func show_overlay_scene(scene_path: String) -> void:
+	var new_scene = load(scene_path).instantiate()
+	new_scene.name = "OverlayScene"  # Optional: easy to reference later
+	add_child(new_scene)
+
+	# Optional: disable input to the background
+	self.set_process_input(false)
+	self.set_process_unhandled_input(false)
+
+# To close the overlay scene later
+func close_overlay_scene() -> void:
+	var overlay = get_node_or_null("OverlayScene")
+	if overlay:
+		overlay.queue_free()
+
+	# Re-enable input if needed
+	self.set_process_input(true)
+	self.set_process_unhandled_input(true)
+	
 func initialize() -> void:
 	reset_state()
-	switch_to("res://scenes/corridor.tscn", "Corridor")
+	var ui = load("res://scenes/UI/ui.tscn").instantiate()
+	add_child(ui)
+	await switch_to("res://scenes/corridor.tscn", "Corridor")
 	
 func show_menu() -> void:
 	switch_to("res://scenes/UI/start_screen.tscn", "StartScreen")
