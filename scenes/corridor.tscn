@@ -1,7 +1,7 @@
 [gd_scene load_steps=25 format=4 uid="uid://c80sux3viw6lm"]
 
 [ext_resource type="PackedScene" uid="uid://i3sp2jfi6rg1" path="res://scenes/characters/player.tscn" id="1_mj2as"]
-[ext_resource type="Script" uid="uid://p5jnv5ygsaun" path="res://scripts/corridor.gd" id="1_so7gr"]
+[ext_resource type="Script" path="res://scripts/corridor.gd" id="1_so7gr"]
 [ext_resource type="Texture2D" uid="uid://dfmcxmyq3y8gy" path="res://assets/graphics/Room.png" id="1_xswuy"]
 [ext_resource type="Texture2D" uid="uid://j0wtgwj5yu7h" path="res://assets/graphics/Tilemap.png" id="2_pblcb"]
 [ext_resource type="Script" uid="uid://cym0el1xi0abu" path="res://scripts/characters/NPC/npc_spawner.gd" id="3_pucmg"]
@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://di04gqgp30gjb" path="res://scripts/stalls/stall_manager.gd" id="5_7w20u"]
 [ext_resource type="Texture2D" uid="uid://cpb6ehqn3ns8q" path="res://assets/graphics/shelf.png" id="5_so7gr"]
 [ext_resource type="PackedScene" uid="uid://bymyqm18cjnjt" path="res://scenes/tp_zone.tscn" id="11_f323m"]
-[ext_resource type="PackedScene" uid="uid://b303f72fvislv" path="res://scenes/UI/bubble.tscn" id="11_pbkn3"]
+[ext_resource type="PackedScene" uid="uid://cy8stq0g2wecb" path="res://scenes/UI/bubble.tscn" id="11_pbkn3"]
 [ext_resource type="Texture2D" uid="uid://6gnu3iq32i1h" path="res://assets/UI/occupied_bubble.png" id="11_ucmnp"]
 [ext_resource type="Texture2D" uid="uid://c1h36clgb6ywf" path="res://assets/UI/wrong_bubble.png" id="13_35wme"]
 

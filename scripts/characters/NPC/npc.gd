@@ -8,6 +8,10 @@ class_name NPC
 @export var queue_pos: int
 @export var angry_time_max: float = 5.0  # Seconds before NPC gets angry
 @export var idle = false
+@export var toilet_paper_uses := 0
+@export var toilet_paper_depleted := false
+
+
 
 # === EXITING LOGIC ===
 @export var exit_position: Vector2
@@ -20,6 +24,7 @@ var is_exiting: bool = false
 @onready var progress_bar: ProgressBar = $ProgressBar
 
 var gender: int
+
 
 # === DRAGGING STATE ===
 var dragging := false
@@ -91,3 +96,14 @@ func _become_angry() -> void:
 func stop_angry_timer() -> void:
 	is_waiting = false
 	progress_bar.visible = false
+
+func npc_uses_bathroom():
+	if Global.toilet_paper_depleted:
+		print("NPC tried to use the bathroom, but there's no toilet paper!")
+		return
+
+	Global.toilet_paper_uses += 1
+
+	if Global.toilet_paper_uses >= 4:
+		Global.toilet_paper_depleted = true
+		print("Toilet paper is finished.")

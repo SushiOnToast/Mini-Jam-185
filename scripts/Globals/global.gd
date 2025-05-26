@@ -13,6 +13,8 @@ var stall_status: Dictionary = {
 }
 
 # game state
+var toilet_paper_uses := 0
+var toilet_paper_depleted := false
 
 signal anger_changed
 
