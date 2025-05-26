@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dmmittq63u8jl"]
+[gd_scene load_steps=7 format=3 uid="uid://dmmittq63u8jl"]
 
 [ext_resource type="Script" uid="uid://txbq5lje6jhm" path="res://scripts/UI/start_screen.gd" id="1_p8yv4"]
 [ext_resource type="Texture2D" uid="uid://58dmm31ynnx" path="res://assets/UI/start_screen.png" id="2_3aq5a"]
+[ext_resource type="AudioStream" uid="uid://ceydajs7ywm1b" path="res://assets/audio/Where&#039;s my Spaceship.wav" id="3_p8yv4"]
 
 [sub_resource type="Animation" id="Animation_wa2qn"]
 length = 0.001
@@ -72,3 +73,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_3aq5a")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_p8yv4")
+autoplay = true

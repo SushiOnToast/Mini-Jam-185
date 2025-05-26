@@ -18,10 +18,13 @@ class_name NPC
 var entered_toilet: bool = false
 var used_toilet: bool = false
 var is_exiting: bool = false
+var was_in_toilet := false
+
 
 # === NODES ===
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 @onready var progress_bar: ProgressBar = $ProgressBar
+@onready var flushing_sound: AudioStreamPlayer = $FlushingSound
 
 var gender: int
 
@@ -68,6 +71,12 @@ func _process(delta: float) -> void:
 	if idle and not angry_timer_started and not entered_toilet:
 		start_angry_timer()
 		angry_timer_started = true
+
+	# Check for toilet entry
+	if entered_toilet and not was_in_toilet:
+		was_in_toilet = true
+		if not flushing_sound.playing:
+			flushing_sound.play()
 
 # === ANGRY TIMER LOGIC ===
 func start_angry_timer() -> void:

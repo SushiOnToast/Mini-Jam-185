@@ -15,6 +15,9 @@ extends Node2D
 @onready var needs_toilet_paper_female: Bubble = $Bubbles/NeedsToiletPaperFemale
 @onready var needs_toilet_paper_male: Bubble = $Bubbles/NeedsToiletPaperMale
 
+@onready var wrong_stall_male_sound: AudioStreamPlayer = $Sounds/WrongStallMaleSound
+@onready var wrong_stall_female_sound: AudioStreamPlayer = $Sounds/WrongStallFemaleSound
+
 var set_male_timer = false
 var set_female_timer = false
 
@@ -67,6 +70,7 @@ func _on_male_door_body_entered(body: NPC) -> void:
 	if not Global.stall_status["male"]:
 		if body.gender:
 			wrong_toilet_male.show_bubble()
+			#wrong_stall_male_sound.play()
 		else:
 			body.hide()
 			Global.stall_status["male"] = true
@@ -74,6 +78,7 @@ func _on_male_door_body_entered(body: NPC) -> void:
 			body.entered_toilet = true
 	else:
 		male_occupied_bubble.show_bubble()
+	
 
 
 func _on_female_door_body_entered(body: NPC) -> void:
@@ -84,6 +89,7 @@ func _on_female_door_body_entered(body: NPC) -> void:
 	if not Global.stall_status["female"]:
 		if not body.gender:
 			wrong_toilet_female.show_bubble()
+			#wrong_stall_female_sound.play()
 		else:
 			body.hide()
 			Global.stall_status["female"] = true
@@ -91,3 +97,5 @@ func _on_female_door_body_entered(body: NPC) -> void:
 			body.entered_toilet = true
 	else:
 		female_occupied_bubble.show_bubble()
+	
+	
