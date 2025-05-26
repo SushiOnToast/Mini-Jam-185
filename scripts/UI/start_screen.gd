@@ -2,7 +2,7 @@ extends Control
 
 class_name PauseScreen
 
-@onready var text: Node = $Text
+@onready var text: TextureRect = $TextureRect
 @onready var state_manager: StateManager = get_tree().get_root().find_child("StateManager", true, false)
 
 func _ready():
