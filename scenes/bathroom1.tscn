@@ -240,7 +240,7 @@ offset_bottom = 137.0
 color = Color(0.027451, 0.0941176, 0.129412, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(8, -10)
+position = Vector2(8, -18)
 zoom = Vector2(6, 6)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
