@@ -1,6 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://cfhqyahv4iij6"]
+[gd_scene load_steps=19 format=3 uid="uid://cfhqyahv4iij6"]
 
 [ext_resource type="Script" uid="uid://dr24ik1fsywxt" path="res://scripts/UI/day_night_panel.gd" id="1_gdt2y"]
+[ext_resource type="Script" uid="uid://comcw1qsc384b" path="res://scenes/UI/ui.gd" id="1_vb61p"]
 [ext_resource type="Texture2D" uid="uid://rqy5ofcv0b4l" path="res://assets/UI/heart.png" id="2_yev5y"]
 [ext_resource type="Texture2D" uid="uid://fggtwgp1em81" path="res://assets/UI/day_time_ui_s.png" id="3_gdt2y"]
 [ext_resource type="FontFile" uid="uid://drpxoboluk65q" path="res://assets/fonts/pixelify_sans/static/PixelifySans-Bold.ttf" id="4_8dubc"]
@@ -101,6 +102,7 @@ _data = {
 }
 
 [node name="UI" type="CanvasLayer"]
+script = ExtResource("1_vb61p")
 
 [node name="DayNightPanel" type="Control" parent="."]
 layout_mode = 3

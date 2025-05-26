@@ -5,6 +5,8 @@ class_name StateManager
 @onready var animation_player: AnimationPlayer = $Transition/AnimationPlayer
 @onready var main: Main = $".."
 
+var ui_node: Node = null
+
 var prev_scene: Node = null
 var prev_scene_path: String = ""
 
@@ -76,11 +78,15 @@ func close_overlay_scene() -> void:
 	
 func initialize() -> void:
 	reset_state()
-	var ui = load("res://scenes/UI/ui.tscn").instantiate()
-	add_child(ui)
+	ui_node = load("res://scenes/UI/ui.tscn").instantiate()
+	add_child(ui_node)
 	await switch_to("res://scenes/corridor.tscn", "Corridor")
 	
 func show_menu() -> void:
+	#if ui_node:
+		#remove_child(ui_node)
+		#ui_node.queue_free()
+		#ui_node = null
 	switch_to("res://scenes/UI/start_screen.tscn", "StartScreen")
 
 func show_pause() -> void:
@@ -104,6 +110,10 @@ func reset_state():
 		current_scene.queue_free()
 		current_scene = null
 		current_scene_path = ""
+	
+	Global.num_angry = 0
+	Global.spawn_timer_wait_time = 7.0
+	Global.played_day_one = false
 
 	prev_scene = null
 	prev_scene_path = ""
@@ -112,3 +122,4 @@ func reset_state():
 	DayAndNightCycleManager.reset()
 	Global.num_angry = 0
 	main.shown_game_over = false
+	

@@ -19,4 +19,5 @@ func _process(delta) -> void:
 		if Input.is_action_just_pressed("quit"):
 			get_tree().quit()
 		if Input.is_action_just_pressed("ui_accept"):
-			state_manager.show_menu()
+			#state_manager.show_menu()
+			get_tree().change_scene_to_file("res://scenes/main.tscn")

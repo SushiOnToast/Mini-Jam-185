@@ -12,5 +12,6 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
 		state_manager.show_pause()
 	if Global.num_angry == 3 and !shown_game_over:
+		DayAndNightCycleManager.pause()
 		state_manager.switch_to("res://scenes/UI/game_over_screen.tscn", "GameOverScreen")
 		shown_game_over = true
