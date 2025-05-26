@@ -5,7 +5,7 @@ extends Control
 @onready var day_transition_label: Label = $"../DayTransition/Label"
 @onready var animation_player: AnimationPlayer = $"../DayTransition/AnimationPlayer"
 
-@export var speed: int = 150
+@export var speed: int = 100
 
 func _ready() -> void:
 	if not Global.played_day_one:

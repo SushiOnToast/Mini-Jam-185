@@ -25,6 +25,7 @@ var num_angry := 0:
 			anger_changed.emit()
 
 var spawn_timer_wait_time: float = 7.0
+var min_spawn_time = 0.5
 
 var clear_npcs = false
 
